@@ -28,11 +28,20 @@
                         tabindex="0"></iframe>
                     </div>
                 </div>
+
+                {% if fname %}
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s"s>
+                        <h2><span class="text-primary">{{ fname }}</span>,<br> Thanks for messaging Yomo Expert Driving School </h2><br><br>
+                         <p class="h3">We will get back to you shortly......</p>
+                    </div>
+                {% else %}
+
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <h6 class="text-primary text-uppercase mb-2">Contact Us</h6>
                     <h1 class="display-6 mb-4">"Get in Touch: Your Questions, Our Answers"</h1>
                     <p class="mb-4">"Have a question or inquiry? We're here to help! Fill out the form below, and our dedicated team will get back to you as soon as possible. Your satisfaction is our priority, and we appreciate your interest in reaching out to us. Thank you for choosing us as your trusted partner. If you have any queries, please don't hesitate to contact us using the form provided." </p>
-                    <form action="" method="post">
+
+                    <form action="{% url 'contact' %}" method="post">
                         {% csrf_token %}
                         <div class="row g-3">
                             <div class="col-md-6">
@@ -65,9 +74,11 @@
                         </div>
                     </form>
                 </div>
+                {% endif %}
             </div>
         </div>
     </div>
     <!-- Contact End -->
+
 
 {% endblock %}

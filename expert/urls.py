@@ -28,4 +28,5 @@ urlpatterns = [
     path('appointment', expert_views.appointment, name='appointment'),
     path('404', expert_views.error, name='error'),
     path('contact', expert_views.contact, name='contact'),
+    path('terms', expert_views.terms, name='terms-and-conditions'),
 ]

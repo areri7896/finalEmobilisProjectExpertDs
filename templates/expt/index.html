@@ -113,14 +113,15 @@
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="position-relative overflow-hidden ps-5 pt-5 h-100" style="min-height: 400px;">
-                        <img class="position-absolute w-100 h-100" src="{% static 'img/cs manual.jpeg' %}" alt="" style="object-fit: cover;">
+                        <iframe   style="object-fit: cover;"class="position-absolute w-100 h-100"  width="560" height="315" src="https://www.youtube.com/embed/gFIpovZwoHo?si=B_-41EqAGE7IUAQ7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+{#                        <img class="position-absolute w-100 h-100" src="{% static 'img/cs manual.jpeg' %}" alt="" style="object-fit: cover;">#}
                         <img class="position-absolute top-0 start-0 bg-white pe-3 pb-3" src="{% static 'img/cs front.jpeg' %}" alt="" style="width: 200px; height: 200px;">
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="h-100">
                         <h6 class="text-primary text-uppercase mb-2">About Us</h6>
-                        <h1 class="display-6 mb-4">We Help Students To Pass Test & Get A License On The First Try</h1>
+                        <h1 class="display-6 mb-4">Expert Yomo Driving School</h1>
                         <p>Welcome to Expert Yomo Driving School, a distinguished institution with a rich legacy of over 15 years in the driving industry in Kenya. Under the visionary leadership of Sir Yuvenalis Ongaki Magare, who has served as the Director for the past 15 years, we have consistently set the standard for excellence in driving education.</p>
                         <h1 class="mb-4">Our Branches </h1>
                         <div class="row g-2 mb-4 pb-2">
@@ -139,7 +140,7 @@
                         </div>
                         <div class="row g-4">
                             <div class="col-sm-6">
-                                <a class="btn btn-primary py-3 px-5" href="">Read More</a>
+                                <a class="btn btn-primary py-3 px-5" href="{% url 'about' %}">Read More</a>
                             </div>
                             <div class="col-sm-6">
                                 <a class="d-inline-flex align-items-center btn btn-outline-primary border-2 p-2" href="tel:+0123456789">
@@ -169,17 +170,17 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="courses-item d-flex flex-column bg-white overflow-hidden h-100">
                         <div class="text-center p-4 pt-0">
-                            <h5 class="mb-3">Automatic & Manual Car Lessons</h5>
-                            <p>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</p>
+                            <h5 class="mb-3">All Vehicle Categories</h5>
+                            <p>At Expert Yomo Driving School, we take pride in offering a comprehensive range of vehicle categories to meet the diverse needs of our students. Our specialized courses cover various types of vehicles, ensuring that each learner receives tailored education for their specific driving goals. Explore the full spectrum of vehicle categories available at our school:</p>
                             <ol class="breadcrumb justify-content-center mb-0">
                                 <li class="breadcrumb-item small"><i class="fa fa-signal text-primary me-2"></i>Beginner</li>
-                                <li class="breadcrumb-item small"><i class="fa fa-calendar-alt text-primary me-2"></i>3 Week</li>
+                                <li class="breadcrumb-item small"><i class="fa fa-calendar-alt text-primary me-2"></i>One Month</li>
                             </ol>
                         </div>
                         <div class="position-relative mt-auto">
                             <img class="img-fluid" src="{% static 'img/cb front.jpeg' %}" alt="">
                             <div class="courses-overlay">
-                                <a class="btn btn-outline-primary border-2" href="">Read More</a>
+                                <a class="btn btn-outline-primary border-2" href="{% url 'courses' %}">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -188,16 +189,16 @@
                     <div class="courses-item d-flex flex-column bg-white overflow-hidden h-100">
                         <div class="text-center p-4 pt-0">
                             <h5 class="mb-3">Highway Driving Lesson</h5>
-                            <p>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</p>
+                            <p>Welcome to Expert Yomo Driving School's Highway Driving Lesson! Our specialized highway driving course is designed to equip you with the skills and confidence needed to navigate highways safely and efficiently. Here's what you can expect from this comprehensive lesson</p>
                             <ol class="breadcrumb justify-content-center mb-0">
                                 <li class="breadcrumb-item small"><i class="fa fa-signal text-primary me-2"></i>Beginner</li>
-                                <li class="breadcrumb-item small"><i class="fa fa-calendar-alt text-primary me-2"></i>3 Week</li>
+                                <li class="breadcrumb-item small"><i class="fa fa-calendar-alt text-primary me-2"></i>One Month</li>
                             </ol>
                         </div>
                         <div class="position-relative mt-auto">
-                            <img class="img-fluid" src="{% static 'img/cx automatic.jpeg' %}" alt="">
+                            <img class="img-fluid" src="{% static 'img/urban.jpg' %}" alt="">
                             <div class="courses-overlay">
-                                <a class="btn btn-outline-primary border-2" href="">Read More</a>
+                                <a class="btn btn-outline-primary border-2" href="{% url 'courses' %}">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -205,53 +206,62 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="courses-item d-flex flex-column bg-white overflow-hidden h-100">
                         <div class="text-center p-4 pt-0">
-                            <h5 class="mb-3">Defensive Driving</h5>
-                            <p>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</p>
+                            <h5 class="mb-3">International Driving <br><span class="text-danger">COMING SOON</span></h5>
+                            <p>Welcome to Expert Yomo, where we empower your global mobility with comprehensive information on International Driving. Whether you're a seasoned traveler, an expatriate, or simply planning an international road trip, we provide valuable insights into obtaining and using International Driving Permits (IDPs).</p>
                             <ol class="breadcrumb justify-content-center mb-0">
                                 <li class="breadcrumb-item small"><i class="fa fa-signal text-primary me-2"></i>Beginner</li>
-                                <li class="breadcrumb-item small"><i class="fa fa-calendar-alt text-primary me-2"></i>3 Week</li>
+                                <li class="breadcrumb-item small"><i class="fa fa-calendar-alt text-primary me-2"></i>One Month</li>
                             </ol>
                         </div>
                         <div class="position-relative mt-auto">
                             <img class="img-fluid" src="{% static 'img/cs front.jpeg' %}" alt="">
                             <div class="courses-overlay">
-                                <a class="btn btn-outline-primary border-2" href="">Read More</a>
+                                <a class="btn btn-outline-primary border-2" href="{% url 'courses' %}">Read More</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-8 my-6 mb-0 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="bg-primary text-center p-5">
-                        <h1 class="mb-4">Make An Enquiry</h1>
-                        <form>
+                        {% if name %}
+                            <span class="text-light mb-4 h1 text-uppercase">{{ name }}</span>,
+                            <div class="container w-50">
+                                <h2 class="text-dark"> Thanks for messaging Yomo Expert Driving School </h2><br><br>
+                                  <p class="h3 text-dark">We will get back to you shortly......</p>
+                            </div>
+
+                        {% else %}
+                            <h1 class="mb-4">Would You Like to Make An Enquiry?</h1>
+                        <form action="{% url 'home' %}" method="post">
+                            {% csrf_token %}
                             <div class="row g-3">
                                 <div class="col-sm-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control border-0" id="gname" placeholder="Gurdian Name">
+                                        <input type="text" class="form-control border-0" name="gname" placeholder="Guardian Name" required>
                                         <label for="gname">Your Name</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control border-0" id="gmail" placeholder="Gurdian Email">
+                                        <input type="email" class="form-control border-0" name="gmail" placeholder="Guardian Email" required>
                                         <label for="gmail">Your Email</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control border-0" id="cname" placeholder="Child Name">
+                                        <input type="text" class="form-control border-0" name="cname" placeholder="Child Name" required>
                                         <label for="cname">Courses</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control border-0" id="cage" placeholder="Child Age">
+                                        <input type="text" class="form-control border-0" name="vehicle" placeholder="Vehicle type" required>
                                         <label for="cage">Vehicle Class</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <textarea class="form-control border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
+                                        <textarea class="form-control border-0" placeholder="Leave a message here" name="message" style="height: 100px" required></textarea>
                                         <label for="message">Message</label>
                                     </div>
                                 </div>
@@ -260,6 +270,7 @@
                                 </div>
                             </div>
                         </form>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -284,7 +295,7 @@
                                     <i class="fa fa-check text-white"></i>
                                 </div>
                                 <h5 class="mb-0">"Drive with Confidence - We're Fully Licensed!</h5>
-                            </div>0
+                            </div>
                             <span>Rest assured knowing that our driving school is fully licensed and accredited. Your safety and learning experience are our top priorities. Your journey starts with us!</span>
                         </div>
                         <div class="col-sm-6 wow fadeIn" data-wow-delay="0.2s">
@@ -312,7 +323,7 @@
                                 </div>
                                 <h5 class="mb-0">Best Trainers</h5>
                             </div>
-                            <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam eos</span>
+                            <span>Welcome to Expert Driving School, where your journey to becoming a confident and skilled driver is tailored to your individual preferences. Our team of certified instructors brings extensive experience, excellent communication skills, and a deep understanding of traffic laws to the training table.</span>
                         </div>
                     </div>
                 </div>
