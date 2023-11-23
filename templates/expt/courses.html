@@ -1,5 +1,8 @@
 {% extends 'expt/base.html' %}
 |{% load static %}
+{% block title %}
+	Courses
+{% endblock %}
 {% block content %}
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-6 my-6 mt-0 wow fadeIn" data-wow-delay="0.1s">
@@ -37,7 +40,7 @@
                             </ol>
                         </div>
                         <div class="position-relative mt-auto">
-                            <img class="img-fluid" src="{% static 'img/cb front.jpeg' %}" alt="">
+                            <img class="img-fluid" src="{% static 'expt/img/cb front.jpeg' %}" alt="">
                             <div class="courses-overlay">
                                 <a class="btn btn-outline-primary border-2" data-toggle="collapse" href="#class_b" role="button" aria-expanded="false" aria-controls="collapseExample">Read More</a>
                             </div>
@@ -55,7 +58,7 @@
                             </ol>
                         </div>
                         <div class="position-relative mt-auto">
-                            <img class="img-fluid" src="{% static 'img/highway.gif' %}" alt="">
+                            <img class="img-fluid" src="{% static 'expt/img/highway.gif' %}" alt="">
                             <div class="courses-overlay">
                                 <a class="btn btn-outline-primary border-2" data-toggle="collapse" href="#highway" role="button" aria-expanded="false" aria-controls="collapseExample">Read More</a>
                             </div>
@@ -73,7 +76,7 @@
                             </ol>
                         </div>
                         <div class="position-relative mt-auto">
-                            <img class="img-fluid" src="{% static 'img/cs side.jpeg' %}" alt="">
+                            <img class="img-fluid" src="{% static 'expt/img/cs side.jpeg' %}" alt="">
                             <div class="courses-overlay">
                                 <a class="btn btn-outline-primary border-2" data-toggle="collapse" href="#idp" role="button" aria-expanded="false" aria-controls="collapseExample">Read More</a>
                             </div>

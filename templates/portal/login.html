@@ -1,0 +1,61 @@
+ {% extends 'portal/base.html' %}
+{% load static %}
+{% block title %}
+
+{% endblock %}
+{% block content %}
+<body class="inner_page login">
+     <div class="row row-gutter">
+    <div class="card bg-light text-white col-md-6">
+        <img src="{% static 'expt/img/carousel-2.jpg' %}" class="card-imgh" alt="...">
+        <div class="card-img-overlay">
+            <h1 class="card-title fw-bold text-center htagline text-wrap">ENG&#x27;ENO E PUAAN</h1>
+        </div>
+    </div>
+    <div class="col-md-6 card-imgw d-flex flex-column justify-content-center">
+        <div class="row d-flex flex-column row-gutter d-flex justify-content-center flex-column">
+            <div class="col-md-12 text-center">
+                <img src="{% static 'expt/img/expert_logo-nobg.png' %}" class="rlogo" alt="">
+                <h1 class="fw-bold primary-text ms-5">Hi, welcome back</h1>
+                <p class="text-center fw-semibold">Please fill in your details to log in</p>
+            </div>
+        </div>
+        <div class="card shadow reg-card">
+            <div class="card-body dw-th">
+                <form method="post">
+
+                        <div class="mb-2">
+                            <p class="fw-bold">Username </p>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Student No/ Employee No" data-val="true" data-val-required="The Username field is required." name="Username" value="">
+                            <span class="text-danger field-validation-valid" data-valmsg-for="Username" data-valmsg-replace="true"></span>
+                        </div>
+                        <label class="form-label fw-bold">Password</label>
+                        <div class="input-group mb-3">
+                            <input type="password" class="form-control" placeholder="Enter your Password" id="password" aria-label="Recipient's username" aria-describedby="togglePassword" style="border-right:none !important" data-val="true" data-val-required="The Password field is required." name="Password">
+                            <span class="input-group-text togglePassword" id="togglePassword">
+                                <i class="ri-eye-off-line" style="cursor: pointer"></i>
+                            </span>
+                        </div>
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+                        <div class="mb-2 d-flex flex-row justify-content-between">
+                            <div class="checkbox text-start mn-2 remembertext">
+                                <input type="checkbox" data-val="true" data-val-required="The RememberMe field is required." id="RememberMe" name="RememberMe" value="true">
+                                <label class="text-black fw-semibold small">Remember me</label>
+                            </div>
+                            <a class="text-decoration-none forgotpswd" href="/Account/ForgotPassword">
+                            <span class="fw-semibold card-stitle forgottext">Forgot Password?</span></a>
+                        </div>
+                        <button class="btn btn-color btn-md primary-btn text-decoration-none" type="submit">Sign In</button>
+                <input name="__RequestVerificationToken" type="hidden" value="CfDJ8OvD65nM8nBLq68IkiIJlOm2HHyNypblXsW7YJibAGpiiasvroQLkJzJt0p4i5lkcElzHUF1MHrDxPO6Wt48kcLgmK8-RKyHSSfrdWNVCf9Ar3TfXz2VFkGbzf1JT1XQUrlx3JGkMTjipwCg8rr9HvgaCMVCvl_JH57-bboUytPphzuzuEl1_9t2r6nmJsbsvQ" /><input name="RememberMe" type="hidden" value="false"></form>
+            </div>
+        </div>
+        <p class="mt-4 text-center text-decoration-none smaller fw-semibold">
+            Don’t have an account ?<a class="text-decoration-none" href="/Account/Register"><span class="primary-text fw-bold" style="text-decoration:none"> Sign Up</span></a>
+            <span class="primary-text">
+                <br /><br /> Copyright &copy;
+                <script type="text/javascript">document.write(new Date().getFullYear());</script>-Expert Yomo Driving School
+            </span>
+        </p>
+    </div>
+</div>
+{% endblock %}

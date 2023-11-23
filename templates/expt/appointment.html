@@ -1,5 +1,8 @@
 {% extends 'expt/base.html' %}
 |{% load static %}
+{% block title %}
+	Appointment
+{% endblock %}
 {% block content %}
 
     <!-- Page Header Start -->
@@ -15,10 +18,22 @@
             </nav>
         </div>
         </div>
+    <!-- Page Header End -->
+
+    {% if message %}
+
+       <center> <div class="alert alert-success alert-dismissible fade show" role="alert">
+                       Hey <strong>{{ name  }}</strong>, Thank you, your appointment has been received
+                <button type="button" class="close btn btn-danger" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                </button>
+        </div></center>
+    {% else %}
     <div class="container">
         Embark on the road to becoming a professional driver with Expert Yomo Driving School! Your journey begins by making an appointment with us. Whether you're starting from scratch, aiming to upgrade your skills, or seeking specialized training in various vehicle categories, our expert instructors are here to guide you. At Expert Yomo, we are committed to shaping confident, responsible drivers who navigate the roads with skill and precision. Book your appointment today, and let us be your trusted partner on the path to mastering the art of driving. Your destination awaits – start your journey with Expert Yomo Driving School.
     </div>
-    <!-- Page Header End -->
+    {% endif %}
+
 
 
     <!-- Appointment Start -->
@@ -29,55 +44,63 @@
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="position-relative overflow-hidden ps-5 pt-5 h-100" style="min-height: 400px;">
-                        <img class="position-absolute w-100 h-100" src="{% static 'img/carousel-3.jpg' %}" alt="" style="object-fit: cover;">
-                        <img class="position-absolute top-0 start-0 bg-white pe-3 pb-3" src="{% static 'img/carousel-4.jpg' %}" alt="" style="width: 200px; height: 200px;">
+                        <img class="position-absolute w-100 h-100" src="{% static 'expt/img/carousel-3.jpg' %}" alt="" style="object-fit: cover;">
+                        <img class="position-absolute top-0 start-0 bg-white pe-3 pb-3" src="{% static 'expt/img/carousel-4.jpg' %}" alt="" style="width: 200px; height: 200px;">
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <h6 class="text-primary text-uppercase mb-2">Appointment</h6>
+                    <h2 class="text-primary text-uppercase mb-2">Appointment</h2>
                     <h1 class="display-6 mb-4">Your journey as a professional  driver begins with making an appointment with us</h1>
                     <form action="" method="post">
                         {% csrf_token %}
+                        {% if form.errors %}
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                {{ form.errors }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                     </button>
+                            </div>
+                        {% endif %}
                         <div class="row g-3">
                             <div class="col-sm-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control border-0 bg-light" id="gname" name="name" placeholder="Your Name">
+                                    <input type="text" class="form-control border-0 bg-light" id="gname" name="aname" placeholder="Your Name" required>
                                     <label for="gname">Your Name</label>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control border-0 bg-light" name="gemail" id="gmail" placeholder="Your Email">
+                                    <input type="email" class="form-control border-0 bg-light" name="gemail" id="gmail" placeholder="Your Email" required>
                                     <label for="gmail">Your Email</label>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-floating">
-                                    <input type="datetime-local" class="form-control border-0 bg-light" name="date" id="date" placeholder="Date">
+                                    <input type="date" class="form-control border-0 bg-light" name="date" id="date" placeholder="Date" required>
                                     <label for="cname">Date</label>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-floating">
-                                    <input type="time" class="form-control border-0 bg-light" name="time" id="time" placeholder="Time">
+                                    <input type="time" class="form-control border-0 bg-light" name="time" id="time" placeholder="Time" required>
                                     <label for="cname">Time</label>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-floating">
-                                    <input type="number" maxlength="10" class="form-control border-0 bg-light" name="phone" id="cage" placeholder="Phone Number">
+                                    <input type="number" maxlength="10" class="form-control border-0 bg-light" name="phone" id="cage" placeholder="Phone Number" required>
                                     <label for="cage">Phone Number</label>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control border-0 bg-light" name="location" id="cage" placeholder="Location">
+                                    <input type="text" class="form-control border-0 bg-light" name="location" id="cage" placeholder="Location" required>
                                     <label for="cage">Location</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea class="form-control border-0 bg-light" name="message" placeholder="Leave a message here" id="message" style="height: 150px"></textarea>
+                                    <textarea class="form-control border-0 bg-light" name="message" placeholder="Leave a message here" id="message" style="height: 150px" required></textarea>
                                     <label for="message">Message</label>
                                 </div>
                             </div>

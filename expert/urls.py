@@ -17,16 +17,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views as expert_views
+from portals import views as portals_views
 
 urlpatterns = [
     path('', expert_views.home, name='home'),
-    path('team', expert_views.team, name='team'),
-    path('about', expert_views.about, name='about'),
-    path('courses', expert_views.courses, name='courses'),
-    path('feature', expert_views.feature, name='feature'),
-    path('testimonial', expert_views.testimonial, name='testimonial'),
-    path('appointment', expert_views.appointment, name='appointment'),
-    path('404', expert_views.error, name='error'),
-    path('contact', expert_views.contact, name='contact'),
-    path('terms', expert_views.terms, name='terms-and-conditions'),
+    path('team/', expert_views.team, name='team'),
+    path('about/', expert_views.about, name='about'),
+    path('courses/', expert_views.courses, name='courses'),
+    path('feature/', expert_views.feature, name='feature'),
+    path('testimonial/', expert_views.testimonial, name='testimonial'),
+    path('appointment/', expert_views.appointment, name='appointment'),
+    path('404/', expert_views.error, name='error'),
+    path('contact/', expert_views.contact, name='contact'),
+    path('terms/', expert_views.terms, name='terms-and-conditions'),
+    # path('portal/', portals_views.dashboard, name='portal'),
+    path('profile/', portals_views.profile, name='profile'),
 ]
