@@ -1,0 +1,22 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block content %}
+               <!-- dashboard inner -->
+
+               <div class="midde_cont">
+                  <div class="container-fluid">
+                     <h1>Add products here</h1>
+                        {% for message in messages %}
+                            <P>{{ message }}</P>
+                        {% endfor %}
+
+                        <form method='post' action="{% url 'add_products-url' %}">
+                            {% csrf_token %}
+                            <input name="exam-name" placeholder="Exam Name" aria-label="Exam name" type="text"><br><br>
+                            <input name="date" placeholder="Date for Exam" aria-label="Date for Exam" type="text"><br><br>
+                            <input name="venue" placeholder="Venue for exam" aria-label="Venue for exam" type="text"><br><br>
+                            <input value="save" type="submit">
+                        </form>
+                  </div>
+               </div>
+{% endblock %}

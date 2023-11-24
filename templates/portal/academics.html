@@ -18,41 +18,117 @@
                      <div class="row column4 graph">
 
                         <!-- tab style  -->
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                            <div class="white_shd full margin_bottom_30">
                               <div class="full graph_head">
                                  <div class="heading1 margin_0">
-                                    <h2>Tab Bar Style 2</h2>
+                                    <h2>Exam and Test Booking</h2>
                                  </div>
                               </div>
-                              <div class="full inner_elements">
+
+                               <label for="name">Your Name</label><div class="full inner_elements">
                                  <div class="row">
                                     <div class="col-md-12">
                                        <div class="tab_style2">
                                           <div class="tabbar padding_infor_info">
                                              <nav>
                                                 <div class="nav nav-tabs" id="nav-tab1" role="tablist">
-                                                   <a class="nav-item nav-link active" id="nav-home-tab2" data-toggle="tab" href="#nav-home_s2" role="tab" aria-controls="nav-home_s2" aria-selected="true">Home</a>
-                                                   <a class="nav-item nav-link" id="nav-profile-tab2" data-toggle="tab" href="#nav-profile_s2" role="tab" aria-controls="nav-profile_s2" aria-selected="false">Profile</a>
-                                                   <a class="nav-item nav-link" id="nav-contact-tab2" data-toggle="tab" href="#nav-contact_s2" role="tab" aria-controls="nav-contacts_s2" aria-selected="false">Contact</a>
+                                                   <a class="nav-item nav-link active" id="nav-home-tab2" data-toggle="tab" href="#nav-home_s2" role="tab" aria-controls="nav-home_s2" aria-selected="true">Exams</a>
+                                                   <a class="nav-item nav-link" id="nav-profile-tab2" data-toggle="tab" href="#nav-profile_s2" role="tab" aria-controls="nav-profile_s2" aria-selected="false">Tests</a>
+                                                   <a class="nav-item nav-link" id="nav-contact-tab2" data-toggle="tab" href="#nav-contact_s2" role="tab" aria-controls="nav-contacts_s2" aria-selected="false">Bookings</a>
                                                 </div>
                                              </nav>
                                              <div class="tab-content" id="nav-tabContent_2">
                                                 <div class="tab-pane fade show active" id="nav-home_s2" role="tabpanel" aria-labelledby="nav-home-tab">
-                                                   <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et 
-                                                      quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos 
-                                                      qui ratione voluptatem sequi nesciunt.
-                                                   </p>
+                                                        <h1>Book for your exam  here</h1>
+                                                        {% for message in messages %}
+                                                            <P>{{ message }}</P>
+                                                        {% endfor %}
+
+                                                        <form method='post' action="{% url 'book-exam-url' %}">
+                                                            {% csrf_token %}
+                                                            <input name="exam-name" placeholder="Exam Name" aria-label="Exam name" type="text"><br><br>
+                                                            <input name="date" placeholder="Date for Exam" aria-label="Date for Exam" type="date"><br><br>
+                                                            <input name="Time" placeholder="Time for exam" aria-label="Time for exam" type="time"><br><br>
+                                                            <input name="venue" placeholder="Venue for exam" aria-label="Venue for exam" type="text"><br><br>
+                                                            <input value="save" class="btn btn-secondary" type="submit">
+                                                        </form>
                                                 </div>
+
                                                 <div class="tab-pane fade" id="nav-profile_s2" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                                   <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et 
-                                                      quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos 
-                                                      qui ratione voluptatem sequi nesciunt.
-                                                   </p>
+                                                        <h1>Book for your exam  here</h1>
+                                                        {% for message in messages %}
+                                                            <P>{{ message }}</P>
+                                                        {% endfor %}
+
+                                                        <form method='post' action="{% url 'book-test-url' %}">
+                                                            {% csrf_token %}
+                                                            <div class="row g-3">
+                                                            <div class="col-md-6">
+                                                                <div class="form-floating">
+                                                                    <input name="test-name" class="form-control border-0 bg-light" id="test-name" placeholder="Exam Name" aria-label="Exam name" type="text">
+                                                                    <label for="test-name">Test Name</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-floating">
+                                                                    <input name="test-date" class="form-control border-0 bg-light" id="test-date" placeholder="Date for Exam" aria-label="Date for Exam" type="date">
+                                                                    <label for="test-date">Test Date</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-floating">
+                                                                    <input name="test-time" class="form-control border-0 bg-light" id="test-time" placeholder="Time for exam" aria-label="Time for exam" type="time">
+                                                                    <label for="test-time">Test Time</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-floating">
+                                                                <input name="test-venue" class="form-control border-0 bg-light" id="test-venue" placeholder="Venue for exam" aria-label="Venue for exam" type="text">
+                                                                    <label for="test-venue">Test Venue</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12">
+                                                            <input value="Book Test" class="btn btn-primary py-3 px-5 center" type="submit">
+                                                            </div>
+                                                            </div>
+                                                        </form>
                                                 </div>
                                                 <div class="tab-pane fade" id="nav-contact_s2" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                                   <p>
-                                                   </p>
+                                                   <table class="table">
+                                                          <thead class="thead-dark">
+                                                            <tr>
+                                                              <th scope="col">#</th>
+                                                              <th scope="col">Description</th>
+                                                              <th scope="col">Booking Type</th>
+                                                              <th scope="col">Edit</th>
+                                                              <th scope="col">Delete</th>
+                                                            </tr>
+                                                          </thead>
+                                                          <tbody>
+                                                            <tr>
+                                                              <th scope="row">1</th>
+                                                              <td>Mark</td>
+                                                              <td>Otto</td>
+                                                              <td><a href="" class="btn btn-secondary">Edit</a></td>
+                                                              <td><a href="" class="btn btn-danger">Delete</a></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <th scope="row">2</th>
+                                                              <td>Jacob</td>
+                                                              <td>Thornton</td>
+                                                              <td><a href="" class="btn btn-secondary">Edit</a></td>
+                                                              <td><a href="" class="btn btn-danger">Delete</a></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <th scope="row">3</th>
+                                                              <td>Larry</td>
+                                                              <td>the Bird</td>
+                                                              <td><a href="" class="btn btn-secondary">Edit</a></td>
+                                                              <td><a href="" class="btn btn-danger">Delete</a></td>
+                                                            </tr>
+                                                          </tbody>
+                                                        </table>
                                                 </div>
                                              </div>
                                           </div>

@@ -1,10 +1,10 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Profile, Address
+from .models import Profile, Location
 
 
 # create profile form
 class ProfileForm(ModelForm):
     class Meta:
         model = Profile
-        fields = ('surname', 'firstname', 'other_names', 'id_number', 'email', 'phone_number', 'gender')
+        fields = ('id_number', 'email', 'phone_number', 'gender')

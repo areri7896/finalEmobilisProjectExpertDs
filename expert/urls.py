@@ -30,6 +30,6 @@ urlpatterns = [
     path('404/', expert_views.error, name='error'),
     path('contact/', expert_views.contact, name='contact'),
     path('terms/', expert_views.terms, name='terms-and-conditions'),
-    # path('portal/', portals_views.dashboard, name='portal'),
+    path('portal/', portals_views.dashboard, name='portal'),
     path('profile/', portals_views.profile, name='profile'),
 ]
