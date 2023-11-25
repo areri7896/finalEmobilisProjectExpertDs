@@ -75,26 +75,33 @@
                      </div>
                   </div>
 
-                  <div class="row column3">
+                  <div class="row column2 d-flex align-content-center justify-content-between">
                      <!-- testimonial -->
                      <div class="col-md-6">
                         <div class="dark_bg full margin_bottom_30">
-                           <div class="full graph_head">
-                              <div class="heading1 margin_0">
-                                 <h2>Trendings</h2>
+                           <div class="full graph_head center aligned">
+                              <div class="heading1 margin_0 ">
+                                 <h2>Calender</h2>
                               </div>
                            </div>
-                           <div class="full graph_revenue">
-                              <div class="row">
+                           <div class="full ">
+                              <div class="row center aligned text-white display-5">
                                  <div class="col-md-12">
+                                     <div class="content">
+                                         <div class="calendar center aligned text-white" >
 
+                                             {{ cal| safe }}
+
+                                        </div>
+                                         <p class="text-white text-center h4">As for now {{ time }} and year {{ current_year }}</p>
+                                     </div>
                               </div>
                            </div>
                         </div>
                      </div>
                      <!-- end testimonial -->
                      <!-- progress bar -->
-                     <div class="col-md-6">
+                     <div class="col-md-6 align-right">
                         <div class="white_shd full margin_bottom_30">
                            <div class="full graph_head">
                               <div class="heading1 margin_0">
@@ -152,11 +159,11 @@
                            </div>
                         </div>
                      </div>
+                     </div>
                      <!-- end progress bar -->
                   </div>
                </div>
             </div>
-               </div>
-            </div>
+
               <!-- end dashboard inner -->
 {% endblock %}

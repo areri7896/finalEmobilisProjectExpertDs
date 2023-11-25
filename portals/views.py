@@ -1,14 +1,47 @@
+import datetime
+
 from django.shortcuts import render, redirect
 from .forms import ProfileForm
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+import calendar
+from calendar import HTMLCalendar
+from datetime import datetime
 
 from .models import Exam, Test
 
 
 # Create your views here.
-def dashboard(request):
-    return render(request, 'portal/dashboard.html', {})
+def dashboard(request, year, month):
+    # create a calendar for dashboard
+    month = month.capitalize()
+    month_number = list(calendar.month_name).index(month)
+    month_number = int(month_number)
+
+    cal = HTMLCalendar().formatmonth(
+        year,
+        month_number,
+    )
+    now = datetime.now()
+    current_year = now.year
+
+    time = now.strftime('%I:%M %p')
+
+    return render(request, 'portal/dashboard.html', {
+        'month': month,
+        'year': year,
+        'month_number': month_number,
+        'cal': cal,
+        'time': time,
+        'current_year': current_year,
+
+    })
+
+
+#
+# def dashboard(request):
+#     # create a calendar for dashboard
+#     return render(request, 'portal/dashboard.html', {})
 
 
 def login(request):
