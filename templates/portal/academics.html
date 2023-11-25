@@ -26,42 +26,68 @@
                                  </div>
                               </div>
 
-                               <label for="name">Your Name</label><div class="full inner_elements">
+                               <div class="full inner_elements">
                                  <div class="row">
                                     <div class="col-md-12">
                                        <div class="tab_style2">
                                           <div class="tabbar padding_infor_info">
                                              <nav>
-                                                <div class="nav nav-tabs" id="nav-tab1" role="tablist">
+                                                 {% for message in messages %}
+                                                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                                         <h2>{{ message }}</h2>
+                                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                              <span aria-hidden="true">&times;</span>
+                                                         </button>
+                                                     </div>
+
+                                                 {% endfor %}
+                                                <div class="nav nav-tabs center aligned border-1" id="nav-tab1" role="tablist">
                                                    <a class="nav-item nav-link active" id="nav-home-tab2" data-toggle="tab" href="#nav-home_s2" role="tab" aria-controls="nav-home_s2" aria-selected="true">Exams</a>
-                                                   <a class="nav-item nav-link" id="nav-profile-tab2" data-toggle="tab" href="#nav-profile_s2" role="tab" aria-controls="nav-profile_s2" aria-selected="false">Tests</a>
-                                                   <a class="nav-item nav-link" id="nav-contact-tab2" data-toggle="tab" href="#nav-contact_s2" role="tab" aria-controls="nav-contacts_s2" aria-selected="false">Bookings</a>
+                                                   <a class="nav-item nav-link " id="nav-profile-tab2" data-toggle="tab" href="#nav-profile_s2" role="tab" aria-controls="nav-profile_s2" aria-selected="false">Tests</a>
+                                                   <a class="nav-item nav-link " id="nav-contact-tab2" data-toggle="tab" href="#nav-contact_s2" role="tab" aria-controls="nav-contacts_s2" aria-selected="false">Exam Bookings</a>
+                                                   <a class="nav-item nav-link " id="nav-test-tab2" data-toggle="tab" href="#nav-test_s2" role="tab" aria-controls="nav-test_s2" aria-selected="false">Test Bookings</a>
                                                 </div>
                                              </nav>
                                              <div class="tab-content" id="nav-tabContent_2">
                                                 <div class="tab-pane fade show active" id="nav-home_s2" role="tabpanel" aria-labelledby="nav-home-tab">
                                                         <h1>Book for your exam  here</h1>
-                                                        {% for message in messages %}
-                                                            <P>{{ message }}</P>
-                                                        {% endfor %}
-
                                                         <form method='post' action="{% url 'book-exam-url' %}">
                                                             {% csrf_token %}
-                                                            <input name="exam-name" placeholder="Exam Name" aria-label="Exam name" type="text"><br><br>
-                                                            <input name="date" placeholder="Date for Exam" aria-label="Date for Exam" type="date"><br><br>
-                                                            <input name="Time" placeholder="Time for exam" aria-label="Time for exam" type="time"><br><br>
-                                                            <input name="venue" placeholder="Venue for exam" aria-label="Venue for exam" type="text"><br><br>
-                                                            <input value="save" class="btn btn-secondary" type="submit">
+                                                            <div class="row g-3">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-floating">
+                                                                        <input name="exam" class="form-control border-0 bg-light" id="exam-name" placeholder="Exam Name" aria-label="Exam name" type="text">
+                                                                        <label for="exam-name">Exam Name</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-floating">
+                                                                        <input name="exam-date" class="form-control border-0 bg-light" id="exam-date" placeholder="Date for Exam" aria-label="Date for Exam" type="date">
+                                                                        <label for="exam-date">Exam date</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-floating">
+                                                                        <input name="exam-time" class="form-control border-0 bg-light" id="exam-time" placeholder="Time for exam" aria-label="Time for exam" type="time">
+                                                                        <label for="exam-time">Exam Time</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-floating">
+                                                                        <input name="exam-venue" class="form-control border-0 bg-light" id="exam-venue" placeholder="Venue for exam" aria-label="Venue for exam" type="text">
+                                                                        <label for="exam-venue">Exam Venue</label>
+                                                                    </div>
+                                                                </div>
+                                                            <div class="col-12 center aligned">
+                                                                <button class="btn btn-primary py-3 px-5 align-self-center" type="submit">Book</button>
+                                                            </div>
+                                                            </div>
                                                         </form>
                                                 </div>
 
                                                 <div class="tab-pane fade" id="nav-profile_s2" role="tabpanel" aria-labelledby="nav-profile-tab">
                                                         <h1>Book for your exam  here</h1>
-                                                        {% for message in messages %}
-                                                            <P>{{ message }}</P>
-                                                        {% endfor %}
-
-                                                        <form method='post' action="{% url 'book-test-url' %}">
+                                                        <form method='POST' action="{% url 'book-test-url' %}">
                                                             {% csrf_token %}
                                                             <div class="row g-3">
                                                             <div class="col-md-6">
@@ -88,8 +114,8 @@
                                                                     <label for="test-venue">Test Venue</label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-12">
-                                                            <input value="Book Test" class="btn btn-primary py-3 px-5 center" type="submit">
+                                                            <div class="col-12 center aligned">
+                                                                <button class="btn btn-primary py-3 px-5 center" type="submit">Book Test</button>
                                                             </div>
                                                             </div>
                                                         </form>
@@ -100,33 +126,51 @@
                                                             <tr>
                                                               <th scope="col">#</th>
                                                               <th scope="col">Description</th>
-                                                              <th scope="col">Booking Type</th>
+                                                              <th scope="col">Exam Booking</th>
                                                               <th scope="col">Edit</th>
                                                               <th scope="col">Delete</th>
                                                             </tr>
                                                           </thead>
                                                           <tbody>
+                                                        <tbody>
+                                                            {% for exam in exams %}
+                                                                <tr>
+                                                                    <th scope="row">{{ forloop.counter }}</th>
+                                                                    <td>{{ exam.exam_name }}</td>
+                                                                    <td>{{ exam.exam_date }}</td>
+                                                                    <td>{{ exam.exam_time }}</td>
+                                                                    <td>{{ exam.exam_venue }}</td>
+                                                                    <td><a href="{% url 'edit_exam' exam.id %}" class="btn btn-secondary">Edit</a></td>
+                                                                    <td><a href="{% url 'delete_exam' exam.id %}" class="btn btn-danger">Delete</a></td>
+                                                                </tr>
+                                                            {% endfor %}
+                                                          </tbody>
+                                                        </table>
+                                                </div>
+                                                <div class="tab-pane fade" id="nav-test_s2" role="tabpanel" aria-labelledby="nav-test-tab2">
+                                                   <table class="table">
+                                                          <thead class="thead-dark">
                                                             <tr>
-                                                              <th scope="row">1</th>
-                                                              <td>Mark</td>
-                                                              <td>Otto</td>
-                                                              <td><a href="" class="btn btn-secondary">Edit</a></td>
-                                                              <td><a href="" class="btn btn-danger">Delete</a></td>
+                                                              <th scope="col">#</th>
+                                                              <th scope="col">Description</th>
+                                                              <th scope="col">Test Booking</th>
+                                                              <th scope="col">Edit</th>
+                                                              <th scope="col">Delete</th>
                                                             </tr>
-                                                            <tr>
-                                                              <th scope="row">2</th>
-                                                              <td>Jacob</td>
-                                                              <td>Thornton</td>
-                                                              <td><a href="" class="btn btn-secondary">Edit</a></td>
-                                                              <td><a href="" class="btn btn-danger">Delete</a></td>
-                                                            </tr>
-                                                            <tr>
-                                                              <th scope="row">3</th>
-                                                              <td>Larry</td>
-                                                              <td>the Bird</td>
-                                                              <td><a href="" class="btn btn-secondary">Edit</a></td>
-                                                              <td><a href="" class="btn btn-danger">Delete</a></td>
-                                                            </tr>
+                                                          </thead>
+                                                          <tbody>
+                                                        <tbody>
+                                                            {% for exam in exams %}
+                                                                <tr>
+                                                                    <th scope="row">{{ forloop.counter }}</th>
+                                                                    <td>{{ test.test_name }}</td>
+                                                                    <td>{{ test.test_date }}</td>
+                                                                    <td>{{ test.test_time }}</td>
+                                                                    <td>{{ test.test_venue }}</td>
+                                                                    <td><a href="{% url 'edit_exam' exam.id %}" class="btn btn-secondary">Edit</a></td>
+                                                                    <td><a href="{% url 'delete_exam' exam.id %}" class="btn btn-danger">Delete</a></td>
+                                                                </tr>
+                                                            {% endfor %}
                                                           </tbody>
                                                         </table>
                                                 </div>
@@ -164,6 +208,5 @@
                </div>
             </div>
          </div>
-               </div>
          <!-- end model popup -->
 {% endblock %}

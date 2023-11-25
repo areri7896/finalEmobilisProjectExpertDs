@@ -18,10 +18,12 @@ def home(request):
         data = Enquiry(name=name, gmail=gmail, courses=cname, vehicleclass=vehicle, message=message)
         data.save()
 
+        subject = 'Making an enquiry for' + '  ' + name
+
         # send email
         send_mail(
-            cname + ' ' + name,  # subject,
-            message + vehicle,  # message,
+            subject,  # subject,
+            message + ' ' + vehicle + ' ' + cname + ' ' + gmail,  # message,
             gmail,  # from email,
             ['expertyomo62@gmail.com', ' expertprint02@gmail.com'],  # to email
         )
@@ -64,7 +66,7 @@ def appointment(request):
         # send an email to the institution
         send_mail(
             subject,  # subject,
-            message + ' ' + phone + 'from' + location + '. booking an appointment for ' + date + time,  # message,
+            message + ' ' + phone + ' ' + 'from' + '  ' + location + '. Booking an appointment for ' + ' ' + date + ' ' + time + ' ' + 'my email is: ' + email,  # message,
             email,  # from email,
             ['plpgroup25@gmail.com', 'expertyomo62@gmail.com', ' expertprint02@gmail.com'],  # to email
         )
@@ -98,13 +100,13 @@ def contact(request):
         subject = request.POST['subject']
         message = request.POST['message']
 
-        data = Contact(name=fname, subject=subject, message=message)
+        data = Contact(name=fname, subject=subject, message=message, email=email)
         data.save()
 
         # send an email to the institution
         send_mail(
             subject + ' ' + fname,  # subject,
-            message,  # message,
+            message + ' ' + 'my contact email is: ' + email,  # message,
             email,  # from email,
             ['plpgroup25@gmail.com', 'expertyomo62@gmail.com', ' expertprint02@gmail.com'],  # to email
         )

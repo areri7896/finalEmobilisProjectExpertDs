@@ -15,7 +15,7 @@ def login(request):
     return render(request, 'portal/login.html', {})
 
 
-def messages(request):
+def messaging(request):
     return render(request, 'portal/messages.html', {})
 
 
@@ -68,29 +68,48 @@ def academics(request):
 
 def book_exam(request):
     if request.method == 'POST':
-        exam = request.POST.get('exam-name')
-        date = request.POST.get('date')
-        time = request.POST.get('time')
-        venue = request.POST.get('venue')
+        exam_name = request.POST['exam']
+        exam_date = request.POST['exam-date']
+        exam_time = request.POST['exam-time']
+        exam_venue = request.POST['exam-venue']
 
-        data = Exam(exam=exam, date=date, time=time, venue=venue)
+        data = Exam(exam_name=exam_name, exam_date=exam_date, exam_time=exam_time, exam_venue=exam_venue)
         data.save()
-        messages.success(request, "Product saved successfully")
-        return redirect("book-exam-url")
+        messages.success(request, 'Booking saved successfully')
+        return redirect('book-exam-url')
     return render(request, 'portal/academics.html', {})
+
+
+def delete_exam(request, id):
+    exam = Exam.objects.get(id=id)
+    exam.delete()
+    messages.success(request, 'Your booking was deleted successfully')
+    return redirect('book-exam-url')
+
+
+def exams(request):
+    all_exams = Exam.objects.all()
+    context = {"exams": all_exams}
+    return render(request, 'portal/academics.html', context)
+
+
+def test(request):
+    all_tests = Test.objects.all()
+    context = {"Test": all_tests}
+    return render(request, 'portal/academics.html', context)
 
 
 def book_test(request):
     if request.method == 'POST':
-        test_name = request.POST.get('test-name')
-        date = request.POST.get('test-date')
-        time = request.POST.get('test-time')
-        venue = request.POST.get('test-venue')
+        test_name = request.POST['test-name']
+        test_date = request.POST['test-date']
+        test_time = request.POST['test-time']
+        test_venue = request.POST['test-venue']
 
-        data = Test(test_name=test_name, date=date, time=time, venue=venue)
+        data = Test(test_name=test_name, test_date=test_date, test_time=test_time, test_venue=test_venue)
         data.save()
-        messages.success(request, "Product saved successfully")
-        return redirect("book-test-url")
+        messages.success(request, 'Booking saved successfully')
+        return redirect('book-test-url')
     return render(request, 'portal/academics.html', {})
 
 

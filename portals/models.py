@@ -40,20 +40,21 @@ class Student(models.Model):
 
 
 class Exam(models.Model):
-    exam = models.CharField(max_length=50, null=False)
-    date = models.CharField(max_length=50, null=False)
-    time = models.CharField(max_length=50, null=False)
-    venue = models.CharField(max_length=10, blank=False, null=False)
+    exam_name = models.CharField(max_length=50, null=False)
+    exam_date = models.CharField(max_length=50, null=False)
+    exam_time = models.CharField(max_length=50, null=False)
+    exam_venue = models.CharField(max_length=10, blank=False, null=False)
 
     def __str__(self):
-        return self.exam
+        return self.exam_name
+
 
 
 class Test(models.Model):
     test_name = models.CharField(max_length=50, blank=False, null=False)
-    date = models.CharField(max_length=50, null=False)
-    time = models.CharField(max_length=50, null=False)
-    venue = models.CharField(max_length=10, blank=False, null=False)
+    test_date = models.CharField(max_length=50, null=False)
+    test_time = models.CharField(max_length=50, null=False)
+    test_venue = models.CharField(max_length=10, blank=False, null=False)
 
     def __str__(self):
         return self.test_name
