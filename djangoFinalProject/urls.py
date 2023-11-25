@@ -16,8 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from expert import urls
-from portals import urls
+from expert import urls as expert_urls
+from portals import urls as portals_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),

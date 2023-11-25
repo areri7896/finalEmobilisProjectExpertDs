@@ -7,6 +7,6 @@ from .models import Profile, Location
 class ProfileForm(ModelForm):
     class Meta:
         model = Profile
-        fields = ('id_number', 'email', 'phone_number', 'gender')
+        fields = ('id_no', 'email', 'phone_number', 'gender')
 
         # widgets

@@ -81,7 +81,15 @@
                         <li><a href="{% url 'receipt' %}"> <span>Invoice</span></a></li>
                      </ul>
                   </li>
-                  <li><a href="{% url 'academics' %}"><i class="fa fa-table purple_color2"></i> <span>Academic</span></a></li>
+                  <li>
+                      <a href="#academics" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-table purple_color2"></i> <span>Academic</span></a>
+
+                      <ul class="collapse list-unstyled" id="academics">
+                        <li> <a href="{% url 'academics' %}"> <span>Exam and test Booking</span></a></li>
+                        <li><a href="{% url 'test-booking' %}"> <span>Bookings record </span></a></li>
+                     </ul>
+
+                  </li>
                   <li>
                      <a href="{% url 'admissions' %}" ><i
                            class="fa fa-diamond yellow_color"></i> <span>Admissions</span></a>

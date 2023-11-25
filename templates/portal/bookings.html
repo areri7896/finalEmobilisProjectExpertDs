@@ -1,0 +1,107 @@
+ {% extends 'portal/base.html' %}
+{% load static %}
+{% block title %}
+
+{% endblock %}
+{% block content %}
+
+<!-- dashboard inner -->
+|<div class="midde_cont">
+  <div class="container-fluid">
+     <div class="row column_title">
+        <div class="col-md-12">
+           <div class="page_title">
+              <h2>Booking Records</h2>
+           </div>
+        </div>
+     </div>
+  <div class="full inner_elements">
+     <div class="row">
+        <div class="col-md-12">
+           <div class="tab_style2">
+              <div class="tabbar padding_infor_info">
+                <nav>
+                    {% for message in messages %}
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <h2>{{ message }}</h2>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                    {% endfor %}
+                    <div class="nav nav-tabs center aligned border-1" id="nav-tab1" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-contact-tab2" data-toggle="tab" href="#nav-contact_s2" role="tab" aria-controls="nav-contacts_s2" aria-selected="false">Exam Bookings</a>
+                        <a class="nav-item nav-link " id="nav-test-tab2" data-toggle="tab" href="#nav-test_s2" role="tab" aria-controls="nav-test_s2" aria-selected="false">Test Bookings</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent_2">
+                    <div class="ab-pane fade show active" id="nav-contact_s2" role="tabpanel" aria-labelledby="nav-contact-tab">
+                        <table class="table">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Exam Booking</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Venue</th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for exam in all_exams %}
+                                <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td>{{ exam.exam_name }}</td>
+                                    <td>{{ exam.exam_date }}</td>
+                                    <td>{{ exam.exam_time }}</td>
+                                    <td>{{ exam.exam_venue }}</td>
+                                    <td><a href="/edit/{{ exam.id }}" class="btn btn-secondary">Edit</a></td>
+                                    <td><a href="/deleteexam/{{ exam.id }}" class="btn btn-danger">Delete</a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="nav-test_s2" role="tabpanel" aria-labelledby="nav-test-tab2">
+                        <table class="table">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Test Booking</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Venue</th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for test in all_tests %}
+                                <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td>{{ test.test_name }}</td>
+                                    <td>{{ test.test_date }}</td>
+                                    <td>{{ test.test_time }}</td>
+                                    <td>{{ test.test_venue }}</td>
+                                    <td><a href="/edit/{{ test.id }}" class="btn btn-secondary">Edit</a></td>
+                                    <td><a href="/deletetest/{{ test.id }}" class="btn btn-danger">Delete</a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}

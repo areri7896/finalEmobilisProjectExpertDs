@@ -1,0 +1,58 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block content %}
+<!-- dashboard inner -->
+<div class="midde_cont">
+  <div class="container-fluid">
+     <div class="row column_title">
+        <div class="col-md-12">
+           <div class="page_title">
+              <h2>Results</h2>
+           </div>
+        </div>
+     </div>
+  <div class="full inner_elements">
+     <div class="row">
+        <div class="col-md-12">
+           <div class="tab_style2">
+              <div class="tabbar padding_infor_info">
+                <nav>
+                    <div class="nav nav-tabs center aligned border-1" id="nav-tab1" role="tablist">
+                        <a style="width: 30%;" class="nav-item nav-link active text-center text-uppercase" id="nav-contact-tab2" data-toggle="tab" href="#nav-contact_s2" role="tab" aria-controls="nav-contacts_s2" aria-selected="false">Results</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent_2">
+                    <div class="ab-pane fade show active" id="nav-contact_s2" role="tabpanel" aria-labelledby="nav-contact-tab">
+                        <table class="table">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Course Name</th>
+                                <th scope="col">Marks</th>
+                                <th scope="col">Grade</th>
+                                <th scope="col">Comment</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for result in results %}
+                                <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td>{{ result.course_name }}</td>
+                                    <td>{{ result.marks }}</td>
+                                    <td>{{ result.grade }}</td>
+                                    <td>{{ result.comment }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>
+  </div>
+</div>
+
+{% endblock %}

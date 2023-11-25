@@ -8,7 +8,7 @@ import calendar
 from calendar import HTMLCalendar
 from datetime import datetime
 
-from .models import Exam, Test, Statement
+from .models import Exam, Test, Statement, Result
 
 
 # Create your views here.
@@ -93,8 +93,9 @@ def profile(request):
     return render(request, 'portal/profile.html', {})
 
 
-def admissions(request):
-    return render(request, 'portal/book_exam.html', {})
+def result(request):
+    results = Result.objects.all()
+    return render(request, 'portal/results.html', {'results': results})
 
 
 def academics(request):
@@ -116,22 +117,27 @@ def book_exam(request):
 
 
 def delete_exam(request, id):
-    exam = Exam.objects.get(id=id)
-    exam.delete()
+    examination = Exam.objects.get(id=id)
+    examination.delete()
     messages.success(request, 'Your booking was deleted successfully')
-    return redirect('book-exam-url')
+    return redirect('test-booking')
 
 
-def exams(request):
+def delete_test(request, id):
+    testbooking = Test.objects.get(id=id)
+    testbooking.delete()
+    messages.success(request, 'Your booking was deleted successfully')
+    return redirect('test-booking')
+
+
+def exam(request):
     all_exams = Exam.objects.all()
-    context = {"exams_list": all_exams}
-    return render(request, 'portal/academics.html', context)
+    return render(request, 'portal/bookings.html', {'all_exams': all_exams})
 
 
 def test(request):
     all_tests = Test.objects.all()
-    context = {"Test": all_tests}
-    return render(request, 'portal/academics.html', context)
+    return render(request, 'portal/bookings.html', {'all_tests': all_tests})
 
 
 def book_test(request):
