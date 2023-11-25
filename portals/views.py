@@ -8,11 +8,11 @@ import calendar
 from calendar import HTMLCalendar
 from datetime import datetime
 
-from .models import Exam, Test
+from .models import Exam, Test, Statement
 
 
 # Create your views here.
-def dashboard(request, year, month):
+def dashboard(request, year=datetime.now().year, month=datetime.now().strftime('%B')):
     # create a calendar for dashboard
     month = month.capitalize()
     month_number = list(calendar.month_name).index(month)
@@ -61,7 +61,9 @@ def payment(request):
 
 
 def statement(request):
-    return render(request, 'portal/statement.html', {})
+    fee_statement = Statement.objects.all()
+    context = {'fee_statement': fee_statement}
+    return render(request, 'portal/statement.html', context)
 
 
 def maps(request):
@@ -122,7 +124,7 @@ def delete_exam(request, id):
 
 def exams(request):
     all_exams = Exam.objects.all()
-    context = {"exams": all_exams}
+    context = {"exams_list": all_exams}
     return render(request, 'portal/academics.html', context)
 
 

@@ -15,6 +15,7 @@ urlpatterns = [
     path('profile/', portals_views.profile, name='profile'),
     path('academics/', portals_views.academics, name='academics'),
     path('book_exam/', portals_views.book_exam, name='book-exam-url'),
+    path('exams/', portals_views.exams, name='exams'),
     path('delete/<id>', portals_views.delete_exam, name='delete-url'),
     path('book_test/', portals_views.book_test, name='book-test-url'),
     path('admissions/', portals_views.admissions, name='admissions'),

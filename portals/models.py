@@ -19,24 +19,23 @@ class Location(models.Model):
         return self.county
 
 
-class Profile(models.Model):
-    id_number = models.IntegerField()
-    email = models.EmailField(max_length=50)
-    phone_number = models.IntegerField()
-    gender = models.CharField(max_length=50, null=True)
-    address = models.ManyToManyField(Location, blank=True)
-
-
 class Student(models.Model):
     first_name = models.CharField(max_length=50, default='John')
     surname = models.CharField(max_length=50, default='Doe')
     other_names = models.CharField(max_length=50, default='your_default_value')
     regno = models.CharField(max_length=10, unique=True)
     course = models.CharField(max_length=15, default=' Class B')
-    profile = models.ForeignKey(Profile, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.regno + ' ' + self.first_name
+        return self.first_name
+
+
+class Profile(models.Model):
+    id_number = models.IntegerField()
+    email = models.EmailField(max_length=50)
+    phone_number = models.IntegerField()
+    gender = models.CharField(max_length=50, null=True)
+    address = models.ManyToManyField(Location, blank=True)
 
 
 class Exam(models.Model):
@@ -49,7 +48,6 @@ class Exam(models.Model):
         return self.exam_name
 
 
-
 class Test(models.Model):
     test_name = models.CharField(max_length=50, blank=False, null=False)
     test_date = models.CharField(max_length=50, null=False)
@@ -58,3 +56,15 @@ class Test(models.Model):
 
     def __str__(self):
         return self.test_name
+
+
+class Statement(models.Model):
+    date = models.DateField()
+    ref = models.CharField(max_length=20)
+    description = models.CharField(max_length=50)
+    debit = models.IntegerField()
+    credit = models.IntegerField()
+    balance = models.IntegerField()
+
+    def __str__(self):
+        return self.description
