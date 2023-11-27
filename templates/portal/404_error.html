@@ -12,12 +12,38 @@
             <div class="error_page">
                 <div class="center">
                     <div class="error_icon">
-                        <img class="img-responsive" src="{% static 'portss/images/layout_img/error.png' %}" alt="#">
+{#                        <img class="img-responsive" src="{% static 'portss/images/layout_img/error.png' %}" alt="#">#}
                     </div>
                 </div>
                 <br>
                 <h3>PAGE NOT FOUND !</h3>
                 <P>YOU SEEM TO BE TRYING TO FIND HIS WAY HOME</P>
+                <table class="table">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Test Booking</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Venue</th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for test in all_tests %}
+                                <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td>{{ test.test_name }}</td>
+                                    <td>{{ test.test_date }}</td>
+                                    <td>{{ test.test_time }}</td>
+                                    <td>{{ test.test_venue }}</td>
+                                    <td><a href="/edit/{{ test.id }}" class="btn btn-secondary">Edit</a></td>
+                                    <td><a href="/delete/test/{{ test.id }}" class="btn btn-danger">Delete</a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
                 <div class="center"><a class="main_bt" href="{% url 'dashboard' %}">Go To Home Page</a></div>
             </div>
         </div>

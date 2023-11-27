@@ -14,7 +14,13 @@ from .models import Exam, Test, Statement, Result
 
 # Create your views here.
 def register_user(request):
-    return render(request, 'portal/register.html', {})
+    if request.method == "POST":
+        form=SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['']
+    else:
+        return render(request, 'portal/register.html', {})
 
 
 def dashboard(request, year=datetime.now().year, month=datetime.now().strftime('%B')):

@@ -25,7 +25,7 @@ Signup
         </div>
         <div class="card shadow reg-card pt-0">
             <div class="card-body dw-th">
-                <form method="post">
+                <form method="post" action="{% url 'register_user-url' %}">
                     <input hidden type="checkbox" checked="checked" data-val="true" data-val-required="The Student field is required." id="Student" name="Student" value="true" />
                     <input hidden type="checkbox" data-val="true" data-val-required="The Staff field is required." id="Staff" name="Staff" value="true" />
 
@@ -54,8 +54,9 @@ Signup
                         <span class="text-danger field-validation-valid" data-valmsg-for="PasswordConfirm" data-valmsg-replace="true"></span>
                         <div class="row">
                             <div class="col-md-2">
-                                <a class="btn btn-link border-1"data-bs-toggle="modal" href="#Register_Help" role="button" >
-                                    <i class="ri-questionnaire-line  primary-text text-center" data-bs-toggle="tooltip" data-bs-placement="right"
+                                <a class="btn btn-link orange_color" data-bs-toggle="modal" href="#Register_Help"
+                                   role="button">
+                                    <i class="ri-questionnaire-line w-25 primary-text text-center" data-bs-toggle="tooltip" data-bs-placement="right"
                                       data-bs-custom-class="custom-tooltip" data-bs-title="help?"></i>
                                 </a>
                             </div>
