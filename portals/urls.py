@@ -3,9 +3,10 @@ from django.urls import path
 from . import views as portals_views
 
 urlpatterns = [
-    path('', portals_views.dashboard, name='dashboard'),
-    path('login/', portals_views.login_user, name='login_user-url'),
+    path('login/', portals_views.dashboard, name='dashboard'),
+    path('', portals_views.login_user, name='login_user-url'),
     path('logout/', portals_views.logout_user, name='logout_user-url'),
+    path('signup/', portals_views.register_user, name='register_user-url'),
     path('<int:year>/<str:month>/', portals_views.dashboard, name='calender'),
     path('messaging/', portals_views.messaging, name='messaging'),
     path('receipt/', portals_views.receipt, name='receipt'),
@@ -17,8 +18,8 @@ urlpatterns = [
     path('academics/', portals_views.academics, name='academics'),
     path('book_exam/', portals_views.book_exam, name='book-exam-url'),
     # path('exams/', portals_views.exam, name='exams'),
-    path('delete/exam/<exam_id>', portals_views.delete_test, name='delete-exam-url'),
-    path('delete/test/<test_id>', portals_views.delete_test, name='delete-test-url'),
+    path('delete/exam/<int:exam_id>', portals_views.delete_test, name='delete-exam-url'),
+    path('delete/test/<int:test_id>', portals_views.delete_test, name='delete-test-url'),
     path('book_test/', portals_views.book_test, name='book-test-url'),
     path('admissions/', portals_views.result, name='admissions'),
     path('faqs/', portals_views.faqs, name='faqs'),

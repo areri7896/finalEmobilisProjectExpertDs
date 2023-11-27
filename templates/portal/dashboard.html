@@ -1,5 +1,8 @@
 {% extends 'portal/base.html' %}
 {% load static %}
+{% block title %}
+	Dashboard
+{% endblock %}
 {% block content %}
 
             <!-- dashboard inner -->
@@ -118,7 +121,7 @@
                                              {{ cal| safe }}
 
                                             </div>
-                                         <p class="text-white text-center h4">As for now <span style="color: #ff5722">{{ time }}</span> and <span style="color: #ff5722">year {{ current_year }}</span></p>
+                                         <p class="text-dark text-center h4">As for now <span style="color: #ff5722">{{ time }}</span> and <span style="color: #ff5722">year {{ current_year }}</span></p>
                                        </div>
                                      </div>
                                     </div>

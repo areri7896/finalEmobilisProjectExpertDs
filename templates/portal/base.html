@@ -39,6 +39,7 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
 </head>
+{% if user.is_authenticated %}
 <body class="dashboard dashboard_1">
    <div class="full_container">
       <div class="inner_container">
@@ -143,6 +144,12 @@
          </div>
       </div>
    </div>
+    {% else %}
+    {% block login %}
+
+
+    {% endblock %}
+   {% endif %}
    <!-- jQuery -->
    <script src="{% static 'portss/js/jquery.min.js' %}"></script>
    <script src="{% static 'portss/js/popper.min.js' %}"></script>

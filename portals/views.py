@@ -1,7 +1,7 @@
 import datetime
 
 from django.shortcuts import render, redirect
-from .forms import ProfileForm
+from .forms import ProfileForm, SignUpForm
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 import calendar
@@ -13,6 +13,10 @@ from .models import Exam, Test, Statement, Result
 
 
 # Create your views here.
+def register_user(request):
+    return render(request, 'portal/register.html', {})
+
+
 def dashboard(request, year=datetime.now().year, month=datetime.now().strftime('%B')):
     # create a calendar for dashboard
     month = month.capitalize()
@@ -37,7 +41,6 @@ def dashboard(request, year=datetime.now().year, month=datetime.now().strftime('
         'current_year': current_year,
 
     })
-
 
 
 def logout_user(request):

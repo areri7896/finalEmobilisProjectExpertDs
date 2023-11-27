@@ -22,6 +22,6 @@ from portals import urls as portals_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('expert.urls')),
-    path('portal/', include('portals.urls')),
+    # path('portal/', include('portals.urls')),
     path('portal/', include('portals.urls'), name='portal-urls'),
 ]
