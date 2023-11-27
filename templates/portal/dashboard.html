@@ -75,95 +75,60 @@
                      </div>
                   </div>
 
-                  <div class="row column2 d-flex align-content-center justify-content-between">
-                     <!-- testimonial -->
-                     <div class="col-md-6">
-                        <div class="dark_bg full margin_bottom_30">
-                           <div class="full graph_head center aligned">
-                              <div class="heading1 margin_0 ">
-                                 <h2 class="h2">Calender</h2>
+                   <div class="row column3">
+                       <!-- testimonial -->
+                        <div class="col-md-6">
+                           <div class="dark_bg full margin_bottom_30">
+                              <div class="full graph_head">
+                                 <div class="heading1 margin_0">
+                                    <h2 class="h2">Calendar</h2>
+                                 </div>
                               </div>
-                           </div>
-                           <div class="full ">
-                              <div class="row center aligned text-white display-5">
-                                 <div class="col-md-12">
-                                     <div class="content">
-                                         <div class="calendar center aligned text-white" >
+                              <div class="full graph_revenue">
+                                 <div class="row center aligned text-white display-5">
+                                    <div class="col-md-12">
+                                       <div class="content testimonial">
+                                          <div class="calendar center aligned text-white h2">
 
                                              {{ cal| safe }}
 
-                                        </div>
+                                            </div>
                                          <p class="text-white text-center h4">As for now <span style="color: #ff5722">{{ time }}</span> and <span style="color: #ff5722">year {{ current_year }}</span></p>
+                                       </div>
                                      </div>
-                              </div>
+                                    </div>
+                                 </div>
                            </div>
                         </div>
-                     </div>
                      <!-- end testimonial -->
                      <!-- progress bar -->
                      <div class="col-md-6 align-right">
                         <div class="white_shd full margin_bottom_30">
-                           <div class="full graph_head">
-                              <div class="heading1 margin_0">
-                                 <h2>Progress Bar</h2>
+                           <div class="full graph_head rounded" style="background-color: #ff5722;">
+                              <div class="heading1 margin_0 " >
+                                 <h2 class="text-white">Progress Bar</h2>
                               </div>
                            </div>
-                           <div class="full progress_bar_inner">
-                              <div class="row">
-                                 <div class="col-md-12">
-                                    <div class="progress_bar">
-                                       <!-- Skill Bars -->
-                                       <span class="skill" style="width:73%;">Attendance <span
-                                             class="info_valume">50%</span></span>
-                                       <div class="progress skill-bar ">
-                                          <div class="progress-bar progress-bar-animated progress-bar-striped"
-                                             role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
-                                             style="width: 50%;">
-                                          </div>
+                            <div class="full graph_revenue">
+                                 <div class="row center aligned display-5">
+                                    <div class="col-md-12">
+                                       <div class="content testimonial">
+                                          <div class="calendar center aligned h2">
+
+                                             {{ cal| safe }}
+
+                                            </div>
+                                         <p class="text-white text-center h4">As for now <span style="color: #ff5722">{{ time }}</span> and <span style="color: #ff5722">year {{ current_year }}</span></p>
                                        </div>
-                                       <span class="skill" style="width:62%;">Theory classes <span
-                                             class="info_volume">65%</span></span>
-                                       <div class="progress skill-bar">
-                                          <div class="progress-bar progress-bar-animated progress-bar-striped"
-                                             role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"
-                                             style="width: 65%;">
-                                          </div>
-                                       </div>
-                                       <span class="skill" style="width:50%;">Practical classes<span
-                                             class="info_valume">50%</span></span>
-                                       <div class="progress skill-bar">
-                                          <div class="progress-bar progress-bar-animated progress-bar-striped"
-                                             role="progressbar" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100"
-                                             style="width: 50%;">
-                                          </div>
-                                       </div>
-                                       <span class="skill" style="width:82%;">Fee Payment <span
-                                             class="info_valume">70%</span></span>
-                                       <div class="progress skill-bar">
-                                          <div class="progress-bar progress-bar-animated progress-bar-striped"
-                                             role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
-                                             style="width: 70%;">
-                                          </div>
-                                       </div>
-                                       <span class="skill" style="width:60%;">PDL maturity <span
-                                             class="info_valume">60%</span></span>
-                                       <div class="progress skill-bar">
-                                          <div class="progress-bar progress-bar-animated progress-bar-striped"
-                                             role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-                                             style="width: 60%;">
-                                          </div>
-                                       </div>
+                                     </div>
                                     </div>
                                  </div>
-                              </div>
                            </div>
                         </div>
                      </div>
-                     </div>
-                     <!-- end progress bar -->
+                   <!-- end progress bar -->
                   </div>
                </div>
-            </div>
 
-              <!-- end dashboard inner -->
+    <!-- end dashboard inner -->
 {% endblock %}

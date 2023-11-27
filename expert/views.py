@@ -32,6 +32,14 @@ def home(request):
         return render(request, 'expt/index.html', {})
 
 
+# def subscribers(request):
+#     if request.method == 'POST':
+#         subscribed = request.POST['subscribe']
+#         return render(request, 'expt/base.html', {'subscribed':subscribed})
+#     else:
+#         return render(request, 'expt/base.html')
+
+
 def team(request):
     return render(request, 'expt/team.html', {})
 
@@ -58,7 +66,8 @@ def appointment(request):
         location = request.POST['location']
         message = request.POST['message']
 
-        data = Appointment(name=aname, email=email,date=date, time=time, pnumber=phone, location=location, message=message)
+        data = Appointment(name=aname, email=email, date=date, time=time, pnumber=phone, location=location,
+                           message=message)
         data.save()
 
         subject = 'Booking Appointment for' + '  ' + aname
@@ -66,7 +75,8 @@ def appointment(request):
         # send an email to the institution
         send_mail(
             subject,  # subject,
-            message + ' ' + phone + ' ' + 'from' + '  ' + location + '. Booking an appointment for ' + ' ' + date + ' ' + time + ' ' + 'my email is: ' + email,  # message,
+            message + ' ' + phone + ' ' + 'from' + '  ' + location + '. Booking an appointment for ' + ' ' + date + ' ' + time + ' ' + 'my email is: ' + email,
+            # message,
             email,  # from email,
             ['plpgroup25@gmail.com', 'expertyomo62@gmail.com', ' expertprint02@gmail.com'],  # to email
         )

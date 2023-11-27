@@ -6,7 +6,7 @@
 {% block content %}
 
 <!-- dashboard inner -->
-|<div class="midde_cont">
+<div class="midde_cont">
   <div class="container-fluid">
      <div class="row column_title">
         <div class="col-md-12">
@@ -50,15 +50,15 @@
                             </tr>
                             </thead>
                             <tbody>
-                            {% for exam in all_exams %}
+                            {% for test in all_exams %}
                                 <tr>
                                     <th scope="row">{{ forloop.counter }}</th>
-                                    <td>{{ exam.exam_name }}</td>
-                                    <td>{{ exam.exam_date }}</td>
-                                    <td>{{ exam.exam_time }}</td>
-                                    <td>{{ exam.exam_venue }}</td>
-                                    <td><a href="/edit/{{ exam.id }}" class="btn btn-secondary">Edit</a></td>
-                                    <td><a href="/deleteexam/{{ exam.id }}" class="btn btn-danger">Delete</a></td>
+                                    <td>{{ test.exam_name }}</td>
+                                    <td>{{ test.exam_date }}</td>
+                                    <td>{{ test.exam_time }}</td>
+                                    <td>{{ test.exam_venue }}</td>
+                                    <td><a href="/edit/{{ test.id }}" class="btn btn-secondary">Edit</a></td>
+                                    <td><a href="/delete/exam/{{ exam.id }}" class="btn btn-danger">Delete</a></td>
                                 </tr>
                             {% endfor %}
                             </tbody>
@@ -86,7 +86,7 @@
                                     <td>{{ test.test_time }}</td>
                                     <td>{{ test.test_venue }}</td>
                                     <td><a href="/edit/{{ test.id }}" class="btn btn-secondary">Edit</a></td>
-                                    <td><a href="/deletetest/{{ test.id }}" class="btn btn-danger">Delete</a></td>
+                                    <td><a href="/delete/test/{{ test.id }}" class="btn btn-danger">Delete</a></td>
                                 </tr>
                             {% endfor %}
                             </tbody>

@@ -7,6 +7,7 @@ from django.contrib import messages
 import calendar
 from calendar import HTMLCalendar
 from datetime import datetime
+from django.contrib.auth import authenticate, login, logout
 
 from .models import Exam, Test, Statement, Result
 
@@ -38,14 +39,27 @@ def dashboard(request, year=datetime.now().year, month=datetime.now().strftime('
     })
 
 
-#
-# def dashboard(request):
-#     # create a calendar for dashboard
-#     return render(request, 'portal/dashboard.html', {})
 
-
-def login(request):
+def logout_user(request):
+    logout(request)
+    messages.success(request, 'You Have Been Logged Out Successfully !!!')
     return render(request, 'portal/login.html', {})
+
+
+def login_user(request):
+    if request.method == "POST":
+        username = request.POST['Username']
+        password = request.POST['Password']
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, 'Your Have Been Successfully Logged in')
+            return redirect('dashboard')
+        else:
+            messages.success(request, 'There was an error logging in. please check your credentials amd try again!!')
+    else:
+        return render(request, 'portal/login.html', {})
 
 
 def messaging(request):
@@ -116,28 +130,24 @@ def book_exam(request):
     return render(request, 'portal/academics.html', {})
 
 
-def delete_exam(request, id):
-    examination = Exam.objects.get(id=id)
+def delete_test(request, test_id, exam_id):
+    testbooking = Test.objects.get(Test, id=test_id)
+    examination = Exam.objects.get(Exam, id=exam_id)
+    testbooking.delete()
     examination.delete()
     messages.success(request, 'Your booking was deleted successfully')
     return redirect('test-booking')
 
 
-def delete_test(request, id):
-    testbooking = Test.objects.get(id=id)
-    testbooking.delete()
-    messages.success(request, 'Your booking was deleted successfully')
-    return redirect('test-booking')
-
-
-def exam(request):
-    all_exams = Exam.objects.all()
-    return render(request, 'portal/bookings.html', {'all_exams': all_exams})
+# def exam(request):
+#     all_exams = Exam.objects.all()
+#     return render(request, 'portal/bookings.html', {'exams': all_exams})
 
 
 def test(request):
     all_tests = Test.objects.all()
-    return render(request, 'portal/bookings.html', {'all_tests': all_tests})
+    all_exams = Exam.objects.all()
+    return render(request, 'portal/bookings.html', {'all_tests': all_tests, 'all_exams': all_exams})
 
 
 def book_test(request):
