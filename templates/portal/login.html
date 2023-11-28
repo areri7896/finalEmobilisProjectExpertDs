@@ -9,12 +9,23 @@ Login
 <div class="container padding_top_20">
     <div class="row column">
         <div class="card bg-light text-white col-md-6">
-            <img src="{% static 'expt/img/cs.jpeg' %}" class="card-img" alt="...">
+            <img class="m-auto" src="{% static 'expt/img/cs front.jpeg' %}" class="card-img" alt="...">
             <div class="card-img-overlay">
-                <h1 class="card-title fw-bold text-center text-wrap orange_color">We Teach Skills, You Drive</h1>
+                <h1 class="card-title fw-bold text-center display-4 text-wrap orange_color top-50">We Teach Skills, You Drive</h1>
             </div>
         </div>
         <div class="col-md-6 card-img d-flex flex-column justify-content-center align-content-center">
+            {% if messages %}{% for message in messages %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <h4>{{ message }}</h4>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+            {% endfor %}
+            {% endif %}
+
             <div class="container w-75">
             <div class="row d-flex flex-column row-gutter d-flex justify-content-center flex-column">
                 <div class="col-md-12 text-center">
@@ -63,4 +74,32 @@ Login
         </div>
     </div>
 </div>
+
+<script>
+$(document).ready(function () {
+$(document).ready(function () {
+
+    //password toggle
+    $("#togglePassword,#toggleCPassword").on('click', function () {
+        var inputs = $("#password,#cpassword");
+        inputs.each(function (index, element) {
+            element.getAttribute('type') === 'password' ? element.setAttribute('type', 'text') : element.setAttribute('type', 'password');
+            this.classList.toggle("bi-eye");
+        });
+    });
+
+
+
+    //printer
+    function printDocument() {
+        var divToPrint = document.getElementById('div_print');
+        var newWin = window.open('', 'Print-Window');
+        newWin.document.open();
+        newWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</body></html>');
+        newWin.document.close();
+        setTimeout(function () { newWin.close(); }, 10);
+    }
+
+});
+</script>
 {% endblock %}

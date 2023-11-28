@@ -10,7 +10,7 @@
                      <div class="row column_title">
                         <div class="col-md-12">
                            <div class="page_title">
-                              <h2>General Elements</h2>
+                              <h2>Bookings</h2>
                            </div>
                         </div>
                      </div>
@@ -32,6 +32,8 @@
                                        <div class="tab_style2">
                                           <div class="tabbar padding_infor_info">
                                              <nav>
+                                             {% if messages %}
+
                                                  {% for message in messages %}
                                                      <div class="alert alert-success alert-dismissible fade show" role="alert">
                                                          <h2>{{ message }}</h2>
@@ -41,6 +43,7 @@
                                                      </div>
 
                                                  {% endfor %}
+                                             {% endif %}
                                                 <div class="nav nav-tabs center aligned border-1" id="nav-tab1" role="tablist">
                                                    <a class="nav-item nav-link active" id="nav-home-tab2" data-toggle="tab" href="#nav-home_s2" role="tab" aria-controls="nav-home_s2" aria-selected="true">Exams</a>
                                                    <a class="nav-item nav-link " id="nav-profile-tab2" data-toggle="tab" href="#nav-profile_s2" role="tab" aria-controls="nav-profile_s2" aria-selected="false">Tests</a>

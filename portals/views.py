@@ -15,12 +15,20 @@ from .models import Exam, Test, Statement, Result
 # Create your views here.
 def register_user(request):
     if request.method == "POST":
-        form=SignUpForm(request.POST)
+        form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data['']
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            messages.success(request, "you have been successfully registered")
+            return redirect('dashboard')
+
     else:
-        return render(request, 'portal/register.html', {})
+        form = SignUpForm()
+        return render(request, 'portal/register.html', {'form': form})
+    return render(request, 'portal/register.html', {'form': form})
 
 
 def dashboard(request, year=datetime.now().year, month=datetime.now().strftime('%B')):
