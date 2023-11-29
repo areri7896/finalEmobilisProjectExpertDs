@@ -10,7 +10,7 @@ from django import forms
 class PaidForm(forms.ModelForm):
     phone = forms.CharField(required=True, widget=forms.widgets.TextInput(
         attrs={"placeholder": "insert your number in this format 0722000000", "class": "form-control"}), label="Phone number")
-    amount = forms.IntegerField(required=True, widget=forms.widgets.TextInput(
+    amount = forms.IntegerField(required=True, widget=forms.widgets.NumberInput(
         attrs={"placeholder": "amount in figures ", "class": "form-control"}), label="Insert Amount you want to pay")
 
     class Meta:

@@ -10,7 +10,7 @@
                      <div class="row column_title">
                         <div class="col-md-12">
                            <div class="page_title">
-                              <h2>Price Table</h2>
+                              <h2>Pay school fees through mpsea express</h2>
                            </div>
                         </div>
                      </div>
@@ -20,24 +20,40 @@
                            <div class="white_shd full margin_bottom_30">
                               <div class="full graph_head">
                                  <div class="heading1 margin_0">
-                                    <h2>Pricing Table</h2>
+                                    <h2>Pay with Mpesa</h2>
                                  </div>
                               </div>
                            <div>
-                               <h1>
-                                       Pay With Mpesa Express
-                                   </h1>
-                                   {% if messages %}
-                                           {% for message in messages %}
-                                               <P>{{ message }}</P>
-                                           {% endfor %}
-                                   {% endif %}
-                                   <form action="{% url 'payment' %}" method="post">
+                               <div class=" row d-flex flex-column row-gutter justify-content-center flex-column">
+                            <div class="row d-flex flex-column row-gutter justify-content-center flex-column">
+                                <div class="col-md-12 text-center">
+                                    <img style="width: 20%;" src="{% static 'portss/images/landing_page/mpesa.png' %}" class="logo" alt="">
+                                    <h1 class="fw-bold text-primary">Hi, Pay With Mpesa Express</h1>
+                                    <p class="text-center h4">Please fill in your details to Pay in</p>
+                                </div>
+                            </div>
+
+                           <div class="row d-flex flex-column row-gutter justify-content-center flex-column">
+                                   <form action="{% url 'payment' %}" class="w-50 offset-md-3" method="post">
                                        {% csrf_token %}
-                                       <input name="phone" type="text" placeholder="Phone Number"><br><br>
-                                       <input name="amount" type="number" placeholder="Amount"><br><br>
-                                       <a href="paymemt/"><input type="submit" value="pay"></a>
+                                       <div class="form-group">
+                                        <label class="form-label fw-bold h4" for="#phone">Phone Number </label><br>
+                                        <div class="input-group mb-2">
+                                            <input name="phone" type="text" id="phone" class="form-control" placeholder="Phone Number" ><br><br><br>
+                                        </div>
+                                        <label class="form-label fw-bold h4" for="#amount">Amount</label>
+                                        <div class="input-group mb-2">
+                                            <input name="amount" type="number" id="amount" class="form-control" placeholder="Amount"  ><br><br>
+                                        </div>
+{#                                      <input name="phone" type="text" placeholder="Phone Number"><br><br>#}
+{#                                       <input name="amount" type="number" placeholder="Amount"><br><br>#}
+                                       <a href="paymemt/"><input class="btn btn-primary w-50" type="submit" value="pay"></a>
+                                       </div>
                                    </form>
+
+                           </div>
+                           </div>
+                           </div>
                                </div>
                            </div>
                         </div>

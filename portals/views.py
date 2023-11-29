@@ -106,25 +106,30 @@ def payment(request):
             form = PaidForm(request.POST)
             if form.is_valid():
                 form.save()
+            value =int(form.cleaned_data['amount'])
 
             payment = MpesaClient()
             account_reference = 'reference'
             phone_number = form.cleaned_data['phone']
-            amount = form.cleaned_data['amount']
+            amount = value
             transaction_desc = 'Description'
             callback_url = 'https://api.darajambili.com/express-payment'
 
             response = payment.stk_push(phone_number, amount, account_reference, transaction_desc, callback_url)
             HttpResponse(response, 'Congratulations! Your payment of {{ amount }} has been successfully made!')
 
-            data = Paid(phone=phone_number, amount=int('amount'),)
+            data = Paid(phone=phone_number, amount=int('amount'), )
             data.save()
             messages.success(request, "Congratulations! Your payment of {{ amount }} has been successfully made!")
-            return redirect("payment")
+            return redirect("pay")
         return render(request, 'portal/payfee.html')
     else:
         messages.success(request, 'you have to be logged in to complete the action!!!')
         return render(request, 'portal/payfee.html', {})
+
+
+def payment_res(request):
+    return HttpResponse
 
 
 @login_required
