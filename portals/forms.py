@@ -25,7 +25,7 @@ class ExamForm(forms.ModelForm):
 class TestForm(forms.ModelForm):
     test_name = forms.CharField(required=True, widget=forms.widgets.TextInput(
         attrs={"placeholder": "Test name", "class": "form-control"}), label="Test_name")
-    test = forms.CharField(required=True, widget=forms.widgets.TextInput(
+    test_date = forms.CharField(required=True, widget=forms.widgets.TextInput(
         attrs={"placeholder": "Test date", "class": "form-control"}), label="Test_date")
     test_time = forms.CharField(required=True, widget=forms.widgets.TextInput(
         attrs={"placeholder": "Test time", "class": "form-control"}), label="Test_time")

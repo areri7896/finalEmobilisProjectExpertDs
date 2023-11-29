@@ -37,7 +37,7 @@
                                            <form action="{% url 'profile' %}" method="post">
                                                {% csrf_token %}
 
-                                               {{ current_exam_form }}
+                                               {{ current_exam_form.as_p }}
 
                                                <button class="btn btn-secondary">Save</button>
 
