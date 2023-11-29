@@ -1,12 +1,42 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Profile, Location
+from .models import Profile, Location, Exam, Test
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 
 
 # create profile form
+class ExamForm(forms.ModelForm):
+    exam_name = forms.CharField(required=True, widget=forms.widgets.TextInput(
+        attrs={"placeholder": "first name", "class": "form-control"}), label="exam_name")
+    exam_date = forms.CharField(required=True, widget=forms.widgets.TextInput(
+        attrs={"placeholder": "first date", "class": "form-control"}), label="exam_date")
+    exam_time = forms.CharField(required=True, widget=forms.widgets.TextInput(
+        attrs={"placeholder": "first time", "class": "form-control"}), label="exam_time")
+    exam_venue = forms.CharField(required=True, widget=forms.widgets.TextInput(
+        attrs={"placeholder": "first venue", "class": "form-control"}), label="exam_venue")
+
+    class Meta:
+        model = Exam
+        fields = ('exam_name', 'exam_date', 'exam_time', 'exam_venue')
+
+
+class TestForm(forms.ModelForm):
+    test_name = forms.CharField(required=True, widget=forms.widgets.TextInput(
+        attrs={"placeholder": "Test name", "class": "form-control"}), label="Test_name")
+    test = forms.CharField(required=True, widget=forms.widgets.TextInput(
+        attrs={"placeholder": "Test date", "class": "form-control"}), label="Test_date")
+    test_time = forms.CharField(required=True, widget=forms.widgets.TextInput(
+        attrs={"placeholder": "Test time", "class": "form-control"}), label="Test_time")
+    test_venue = forms.CharField(required=True, widget=forms.widgets.TextInput(
+        attrs={"placeholder": "Test venue", "class": "form-control"}), label="Test_venue")
+
+    class Meta:
+        model = Test
+        fields = ('test_name', 'test_date', 'test_time', 'test_venue')
+
+
 class ProfileForm(ModelForm):
     class Meta:
         model = Profile

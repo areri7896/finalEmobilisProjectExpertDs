@@ -21,7 +21,7 @@ class ExamAdmin(admin.ModelAdmin):
 
 @admin.register(Test)
 class TestAdmin(admin.ModelAdmin):
-    list_display = ('test_time', 'test_venue')
+    list_display = ('test_name', 'test_time', 'test_venue')
     ordering = ('test_date',)
     search_fields = ('test_date', 'test_venue', 'test_name')
 

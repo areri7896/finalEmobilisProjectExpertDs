@@ -49,6 +49,7 @@ class Profile(models.Model):
 
 
 class Exam(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
     exam_name = models.CharField(max_length=50, null=False)
     exam_date = models.CharField(max_length=50, null=False)
     exam_time = models.CharField(max_length=50, null=False)
@@ -56,10 +57,11 @@ class Exam(models.Model):
     supervisor = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
-        return self.exam_name
+        return f"{self.exam_name}"
 
 
 class Test(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
     test_name = models.CharField(max_length=50, blank=False, null=False)
     test_date = models.CharField(max_length=50, null=False)
     test_time = models.CharField(max_length=50, null=False)
@@ -71,8 +73,8 @@ class Test(models.Model):
 
 
 class Statement(models.Model):
-    date = models.DateField()
-    ref = models.CharField(max_length=20)
+    date = models.DateTimeField(auto_now_add=True)
+    ref = models.CharField(max_length=20, unique=True)
     description = models.CharField(max_length=50)
     debit = models.IntegerField()
     credit = models.IntegerField()

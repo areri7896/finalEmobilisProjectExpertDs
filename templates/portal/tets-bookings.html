@@ -31,40 +31,39 @@
 
                     {% endfor %}
                     <div class="nav nav-tabs center aligned border-1" id="nav-tab1" role="tablist">
-                        <a class="nav-item nav-link active" id="nav-contact-tab2" data-toggle="tab" href="#nav-contact_s2" role="tab" aria-controls="nav-contacts_s2" aria-selected="false">Exam Bookings</a>
-                        <a class="nav-item nav-link " id="nav-test-tab2" data-toggle="tab" href="#nav-test_s2" role="tab" aria-controls="nav-test_s2" aria-selected="false">Test Bookings</a>
+                        <a class="nav-item nav-link active " id="nav-test-tab2" data-toggle="tab" href="#nav-test_s2" role="tab" aria-controls="nav-test_s2" aria-selected="false">Test Bookings</a>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent_2">
-                    <div class="ab-pane fade show active" id="nav-contact_s2" role="tabpanel" aria-labelledby="nav-contact-tab">
-                        <table class="table">
-                            <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Description</th>
-                                <th scope="col">Exam Booking</th>
-                                <th scope="col">Time</th>
-                                <th scope="col">Venue</th>
-                                <th scope="col">Edit</th>
-                                <th scope="col">Delete</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for test in all_exams %}
-                                <tr>
-                                    <th scope="row">{{ forloop.counter }}</th>
-                                    <td>{{ test.exam_name }}</td>
-                                    <td>{{ test.exam_date }}</td>
-                                    <td>{{ test.exam_time }}</td>
-                                    <td>{{ test.exam_venue }}</td>
-                                    <td><a href="/edit/{{ test.id }}" class="btn btn-secondary">Edit</a></td>
-                                    <td><a href="/delete/exam/{{ exam.id }}" class="btn btn-danger">Delete</a></td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="tab-pane fade" id="nav-test_s2" role="tabpanel" aria-labelledby="nav-test-tab2">
+{#                    <div class="ab-pane fade show active" id="nav-contact_s2" role="tabpanel" aria-labelledby="nav-contact-tab">#}
+{#                        <table class="table">#}
+{#                            <thead class="thead-dark">#}
+{#                            <tr>#}
+{#                                <th scope="col">#</th>#}
+{#                                <th scope="col">Description</th>#}
+{#                                <th scope="col">Exam Booking</th>#}
+{#                                <th scope="col">Time</th>#}
+{#                                <th scope="col">Venue</th>#}
+{#                                <th scope="col">Edit</th>#}
+{#                                <th scope="col">Delete</th>#}
+{#                            </tr>#}
+{#                            </thead>#}
+{#                            <tbody>#}
+{#                            {% for test in all_exams %}#}
+{#                                <tr>#}
+{#                                    <th scope="row">{{ forloop.counter }}</th>#}
+{#                                    <td>{{ test.exam_name }}</td>#}
+{#                                    <td>{{ test.exam_date }}</td>#}
+{#                                    <td>{{ test.exam_time }}</td>#}
+{#                                    <td>{{ test.exam_venue }}</td>#}
+{#                                    <td><a href="/exam/{{ exam.pk }}" class="btn btn-secondary">Edit</a></td>#}
+{#                                    <td><a href="{% url 'delete_exam' exam.pk %}" class="btn btn-danger">Delete</a></td>#}
+{#                                </tr>#}
+{#                            {% endfor %}#}
+{#                            </tbody>#}
+{#                        </table>#}
+{#                    </div>#}
+{#                    <div class="tab-pane fade" id="nav-test_s2" role="tabpanel" aria-labelledby="nav-test-tab2">#}
                         <table class="table">
                             <thead class="thead-dark">
                             <tr>
@@ -85,8 +84,8 @@
                                     <td>{{ test.test_date }}</td>
                                     <td>{{ test.test_time }}</td>
                                     <td>{{ test.test_venue }}</td>
-                                    <td><a href="/edit/{{ test.id }}" class="btn btn-secondary">Edit</a></td>
-                                    <td><a href="/delete/test/{{ test.id }}" class="btn btn-danger">Delete</a></td>
+                                    <td><a href="{% url 'test-update' test.id %}" class="btn btn-secondary">Edit</a></td>
+                                    <td><a href="{% url 'delete-test-url' test.id %}" class="btn btn-danger">Delete</a></td>
                                 </tr>
                             {% endfor %}
                             </tbody>
