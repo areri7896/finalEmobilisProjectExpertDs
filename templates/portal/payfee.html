@@ -23,7 +23,22 @@
                                     <h2>Pricing Table</h2>
                                  </div>
                               </div>
-
+                           <div>
+                               <h1>
+                                       Pay With Mpesa Express
+                                   </h1>
+                                   {% if messages %}
+                                           {% for message in messages %}
+                                               <P>{{ message }}</P>
+                                           {% endfor %}
+                                   {% endif %}
+                                   <form action="{% url 'payment' %}" method="post">
+                                       {% csrf_token %}
+                                       <input name="phone" type="text" placeholder="Phone Number"><br><br>
+                                       <input name="amount" type="number" placeholder="Amount"><br><br>
+                                       <a href="paymemt/"><input type="submit" value="pay"></a>
+                                   </form>
+                               </div>
                            </div>
                         </div>
                      </div>

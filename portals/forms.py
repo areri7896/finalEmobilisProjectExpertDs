@@ -7,6 +7,17 @@ from django import forms
 
 
 # create profile form
+class PaidForm(forms.ModelForm):
+    phone = forms.CharField(required=True, widget=forms.widgets.TextInput(
+        attrs={"placeholder": "insert your number in this format 0722000000", "class": "form-control"}), label="Phone number")
+    amount = forms.IntegerField(required=True, widget=forms.widgets.TextInput(
+        attrs={"placeholder": "amount in figures ", "class": "form-control"}), label="Insert Amount you want to pay")
+
+    class Meta:
+        model = Exam
+        fields = ("phone", "amount")
+
+
 class ExamForm(forms.ModelForm):
     exam_name = forms.CharField(required=True, widget=forms.widgets.TextInput(
         attrs={"placeholder": "first name", "class": "form-control"}), label="exam_name")

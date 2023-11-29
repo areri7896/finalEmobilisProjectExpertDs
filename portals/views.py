@@ -2,8 +2,10 @@ import datetime
 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from .forms import ProfileForm, SignUpForm, TestForm, ExamForm
-from django.http import HttpResponseRedirect
+from django_daraja.mpesa.core import MpesaClient
+
+from .forms import ProfileForm, SignUpForm, TestForm, ExamForm, PaidForm
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import messages
 import calendar
 from calendar import HTMLCalendar
@@ -15,7 +17,7 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
 
-from .models import Exam, Test, Statement, Result
+from .models import Exam, Test, Statement, Result, Paid
 
 
 # Create your views here.
@@ -99,7 +101,30 @@ def receipt(request):
 
 @login_required
 def payment(request):
-    return render(request, 'portal/payfee.html', {})
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = PaidForm(request.POST)
+            if form.is_valid():
+                form.save()
+
+            payment = MpesaClient()
+            account_reference = 'reference'
+            phone_number = form.cleaned_data['phone']
+            amount = form.cleaned_data['amount']
+            transaction_desc = 'Description'
+            callback_url = 'https://api.darajambili.com/express-payment'
+
+            response = payment.stk_push(phone_number, amount, account_reference, transaction_desc, callback_url)
+            HttpResponse(response, 'Congratulations! Your payment of {{ amount }} has been successfully made!')
+
+            data = Paid(phone=phone_number, amount=int('amount'),)
+            data.save()
+            messages.success(request, "Congratulations! Your payment of {{ amount }} has been successfully made!")
+            return redirect("payment")
+        return render(request, 'portal/payfee.html')
+    else:
+        messages.success(request, 'you have to be logged in to complete the action!!!')
+        return render(request, 'portal/payfee.html', {})
 
 
 @login_required
@@ -271,3 +296,28 @@ def book_test(request):
 @login_required
 def faqs(request):
     return render(request, 'portal/faqs.html', {})
+
+# def Pay(request):
+#     if request.user.is_authenticated:
+#         if request.method == 'POST':
+#             form = PaidForm(request.POST)
+#             if form.is_valid():
+#                 form.save()
+#             payment = MpesaClient()
+#             account_reference = 'reference'
+#             phone_number = request.POST.get('phone')
+#             amount = int(request.POST.get('amount'))
+#             transaction_desc = 'Description'
+#             callback_url = 'https://api.darajambili.com/express-payment'
+#
+#             response = payment.stk_push(phone_number, amount, account_reference, transaction_desc, callback_url)
+#             HttpResponse(response, 'Congratulations! Your payment of {{ amount }} has been successfully made!')
+#
+#             data = Paid(phone=phone_number, amount=int('amount'),)
+#             data.save()
+#             messages.success(request, "Congratulations! Your payment of {{ amount }} has been successfully made!")
+#             return redirect("payment")
+#         return render(request, 'portal/payfee.html')
+#     else:
+#         messages.success(request, 'you have to be logged in to complete the action!!!')
+#         return redirect("login_user-url")
