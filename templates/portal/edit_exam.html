@@ -19,7 +19,7 @@
                         <div class="col-md-2"></div>
                         <div class="col-md-8">
                            <div class="white_shd full margin_bottom_30">
-                              <div class="full graph_head">
+                              <div class="full graph_head orange_bg">
                                  <div class="heading1 margin_0">
                                     <h2>User Exam update</h2>
                                  </div>
@@ -34,12 +34,12 @@
                                               Congratulations! Your profile was successfully Updated.
                                            {% else %}
 
-                                           <form action="{% url 'profile' %}" method="post">
+                                           <form action="{% url 'profile' %}" method="post" class="offset-md-2 w-75">
                                                {% csrf_token %}
 
                                                {{ current_exam_form.as_p }}
 
-                                               <button class="btn btn-secondary">Save</button>
+                                               <button class="btn btn-secondary w-25">Save</button>
 
                                            </form>
                                            {% endif %}

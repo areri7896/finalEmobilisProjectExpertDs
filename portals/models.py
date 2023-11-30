@@ -47,6 +47,9 @@ class Profile(models.Model):
     gender = models.CharField(max_length=50, null=True)
     address = models.ManyToManyField(Location, blank=True)
 
+    def __str__(self):
+        return self.email
+
 
 class Exam(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
@@ -87,7 +90,7 @@ class Statement(models.Model):
 class Paid(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     phone = models.CharField(max_length=50, blank=False, null=False)
-    amount = models.IntegerField(blank=False, null=False)
+    amount = models.CharField(max_length=50, blank=False, null=False )
 
     def __str__(self):
         return self.phone

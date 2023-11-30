@@ -36,8 +36,12 @@
 
                                            <form action="{% url 'profile' %}" method="post">
                                                {% csrf_token %}
+                                               <div class="col-md-10 mb-2 d-flex flex-row justify-content-end">
+                                                   <div class="form-check text-start ms-2">
 
                                                {{ form.as_p }}
+                                                   </div>
+                                               </div>
 
                                                <button class="btn btn-secondary">Save</button>
 

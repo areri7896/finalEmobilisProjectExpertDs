@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Test, Exam, Profile, Location, Student, Statement, Result
+from .models import Test, Exam, Profile, Location, Student, Statement, Result, Paid
 
 # Register your models here.
 admin.site.register(Student)
@@ -38,3 +38,10 @@ class StatementAdmin(admin.ModelAdmin):
     list_display = ('date', 'ref', 'description', 'debit', 'credit', 'balance',)
     ordering = ('date',)
     search_fields = ('ref', 'description', 'balance', 'date',)
+
+
+@admin.register(Paid)
+class PaidAdmin(admin.ModelAdmin):
+    list_display = ('date','amount', 'phone')
+    ordering = ('date',)
+    search_fields = ('amount', 'phone', 'date',)

@@ -106,7 +106,7 @@ def payment(request):
             form = PaidForm(request.POST)
             if form.is_valid():
                 form.save()
-            value =int(form.cleaned_data['amount'])
+            value =int(float(form.cleaned_data['amount']))
 
             payment = MpesaClient()
             account_reference = 'reference'
@@ -121,7 +121,7 @@ def payment(request):
             data = Paid(phone=phone_number, amount=int('amount'), )
             data.save()
             messages.success(request, "Congratulations! Your payment of {{ amount }} has been successfully made!")
-            return redirect("pay")
+            return redirect("https://api.darajambili.com/express-payment")
         return render(request, 'portal/payfee.html')
     else:
         messages.success(request, 'you have to be logged in to complete the action!!!')
@@ -148,22 +148,18 @@ def statement_pdf(request):
 
     records = Statement.objects.all()
 
-    lines = [
-        "record.date",
-        "record.ref",
-        "record.description",
-    ]
+    lines = []
+
     for record in records:
+        textobject.textLine(record)
         lines.append(record)
 
-        # for row in row:
-        #     textobject.textLine(row)
-
         c.drawText(textobject)
+
         c.showPage()
         c.save()
         buff.seek(0)
-    return FileResponse(buff, as_attachment=True, filename='statement.pdf')
+    return FileResponse(buff, as_attachment=False, filename='statement.pdf')
 
 
 @login_required
@@ -249,9 +245,10 @@ def exam_update(request, pk):
         form = ExamForm(request.POST or None, instance=current_exam_record)
         if form.is_valid():
             form.save()
-            messages.success(request, 'your record was successfuly updated')
+            messages.success(request, 'your record was successfully updated')
             return redirect('exam-booking-url')
-        return render(request, 'portal/edit_exam.html', {'current_exam_form': form})
+        else:
+            return render(request, 'portal/edit_exam.html', {'current_exam_form': form})
     else:
         messages.success(request, 'SORRY!!!!, you have to be logged in to update this record')
     return redirect('exam-booking-url')
@@ -263,9 +260,10 @@ def edit_test(request, pk):
         form = TestForm(request.POST or None, instance=current_test_record)
         if form.is_valid():
             form.save()
-            messages.success(request, 'your record was successfuly updated')
+            messages.success(request, 'your record was successfully updated')
             return redirect('test-booking-url')
-        return render(request, 'portal/edit_test.html', {'current_test_form': form})
+        else:
+            return render(request, 'portal/edit_test.html', {'current_test_form': form})
     else:
         messages.success(request, 'SORRY!!!!, you have to be logged in to update this record')
         return redirect('test-booking-url')

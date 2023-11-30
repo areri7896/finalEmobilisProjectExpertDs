@@ -13,6 +13,8 @@ import os.path
 from pathlib import Path
 from decouple import config
 from dotenv import load_dotenv
+import django_heroku
+import dj_database_url
 
 load_dotenv()
 from django.conf.global_settings import EMAIL_USE_SSL
@@ -54,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'djangoFinalProject.urls'
@@ -123,6 +126,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / "expert/../static", ]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -141,7 +145,7 @@ EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
 # LOGIN_REDIRECT_URL = 'home'
 
 # DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-#comnsumwer key of the app is generated
+# comnsumwer key of the app is generated
 MPESA_ENVIRONMENT = os.getenv('MPESA_ENVIRONMENT')
 MPESA_CONSUMER_KEY = os.getenv('MPESA_CONSUMER_KEY')
 MPESA_CONSUMER_SECRET = os.getenv('MPESA_CONSUMER_SECRET')
@@ -152,3 +156,5 @@ MPESA_SHORTCODE_TYPE = os.getenv('MPESA_SHORTCODE_TYPE')
 MPESA_INITIATOR_USERNAME = os.getenv('MPESA_INITIATOR_USERNAME')
 
 MPESA_INITIATOR_SECURITY_CREDENTIAL = os.getenv('MPESA_INITIATOR_SECURITY_CREDENTIAL')
+
+django_heroku.settings(locals())

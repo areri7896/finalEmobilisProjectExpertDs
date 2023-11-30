@@ -22,10 +22,10 @@ statement
                                  <div class="heading1 margin_0">
                                     <h2>Payments</h2>
                                  </div>
-                                  <a href="{% url 'statement-pdf' %}" class="btn btn-dark white float-end"><i class="bi bi-printer">  Print</i></a>
+                                  <a href="{% url 'statement-pdf' %}" class="btn btn-dark white float-end"><i class="bi bi-printer" >  Print</i></a>
 
                               </div>
-                              <div class="full price_table padding_infor_info">
+                              <div class="full price_table padding_infor_info" id="feestatement" name="feestatement">
                                  <div class="row">
                                     <div class="col-lg-12">
                                        <div class="table-responsive-sm">
@@ -65,5 +65,26 @@ statement
                      </div>
                   </div>
                </div>
+    <script>
+       //printer
+    function printDocument() {
+        var divToPrint = document.getElementById('div_print');
+        var newWin = window.open('', 'Print-Window');
+        newWin.document.open();
+        newWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</body></html>');
+        newWin.document.close();
+        setTimeout(function () { newWin.close(); }, 10);
+    }
+    </script>
+        <script>
+        function printDiv(divName) {
+            var printContents = document.getElementById(divName).innerHTML;
+            var originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+
+        };
+    </script>
                   <!-- end dashboard inner -->
 {% endblock %}
