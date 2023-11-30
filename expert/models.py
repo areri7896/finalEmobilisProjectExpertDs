@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 class Appointment(models.Model):
     name = models.CharField(max_length=70)
-    email = models.EmailField(unique=True, max_length=50)
+    email = models.EmailField(unique=False, max_length=50)
     date = models.DateField()
     time = models.TimeField()
     pnumber = models.CharField(max_length=12)
