@@ -106,7 +106,7 @@ def payment(request):
             form = PaidForm(request.POST)
             if form.is_valid():
                 form.save()
-            value =int(float(form.cleaned_data['amount']))
+            value =int(int(form.cleaned_data['amount']))
 
             payment = MpesaClient()
             account_reference = 'reference'
